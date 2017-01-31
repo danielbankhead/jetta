@@ -1,5 +1,5 @@
 # Jetta
-## A fast, simple, and efficient HTTP(S) request and url-parsing library
+## A fast and simple HTTP(S) request and URL-parsing library
 
 [![Jetta by Altus Aero][shield-io-altusaero]][altusaero-github] [![npm version][shield-io-npm-version]][npm] [![npm total downloads][shield-io-npm-total-downloads]][npm] [![npm license][shield-io-npm-license]][npm] [![AppVeyor][shield-io-AppVeyor]][appveyor] [![Travis CI][shield-io-Travis-CI]][travis] [![Travis CI][shield-io-Coveralls]][coveralls] [![GitHub - Issues Open][shield-io-GitHub-Issues-Open]][github-issues] [![GitHub - Pull Requests Open][shield-io-GitHub-Pull-Requests-Open]][github-pulls] [![GitHub - Contributors][shield-io-GitHub-Contributors]][github-graphs-contributors] [![Standard - JavaScript Style Guide][shield-io-standard-style]][standardjs]
 
@@ -484,7 +484,7 @@ We wanted a simple, flexible, and easy-to-use request library that didn't compro
   - Minimal dependencies - less licensing and code to review, for security and legal purposes
 
 
-### Goals
+## Goals
   - keep it simple
   - keep it fast - it's name is _jetta_, as in _jet stream_
   - keep it secure

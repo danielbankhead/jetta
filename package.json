@@ -9,7 +9,7 @@
   ],
   "dependencies": {
   },
-  "description": "A fast and simple HTTP(S) request and url-parsing library",
+  "description": "A fast and simple HTTP(S) request and URL-parsing library",
   "devDependencies": {
     "bronze": "^0.2.1",
     "coveralls": "^2.11.15",
