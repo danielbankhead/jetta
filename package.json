@@ -1,0 +1,89 @@
+{
+  "author": "Altus Aero LLC <team@altusaero.com> (https://altusaero.com/)",
+  "bugs": {
+    "email": "team@altusaero.com",
+    "url": "https://github.com/altusaero/jetta/issues"
+  },
+  "contributors": [
+    "Daniel Bankhead <dan@danielbankhead.com> (https://danielbankhead.com/)"
+  ],
+  "dependencies": {
+  },
+  "description": "A fast and simple HTTP(S) request and url-parsing library",
+  "devDependencies": {
+    "bronze": "^0.2.1",
+    "coveralls": "^2.11.15",
+    "nsp": "^2.6.2",
+    "nyc": "^10.0.0",
+    "pre-commit": "^1.2.2",
+    "standard": "^8.0.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0"
+  },
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=4.0.0"
+  },
+  "homepage": "https://github.com/altusaero/jetta",
+  "keywords": [
+    "jetta",
+    "http",
+    "https",
+    "url",
+    "get",
+    "fetch",
+    "wget",
+    "curl",
+    "request",
+    "head",
+    "post",
+    "put",
+    "uri",
+    "validate"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "name": "jetta",
+  "nyc": {
+    "branches": 100,
+    "exclude": [
+      "benchmark",
+      "dev"
+    ],
+    "functions": 100,
+    "include": [
+      "**/*.js"
+    ],
+    "lines": 100,
+    "reporter": [
+      "html",
+      "text"
+    ],
+    "statements": 100
+  },
+  "pre-commit": {
+    "run": [
+      "test"
+    ],
+    "silent": false
+  },
+  "preferGlobal": false,
+  "private": false,
+  "repository": "altusaero/jetta",
+  "scripts": {
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "standard",
+    "nsp": "nsp check",
+    "postversion": "git push && git push --tags",
+    "preversion": "node dev/changelog-preversion",
+    "start": "node .",
+    "tape": "tape \"tests/*.js\" | tap-spec",
+    "test": "npm run nsp && npm run lint && nyc --check-coverage --show-process-tree npm run tape",
+    "version": "node dev/changelog-version"
+  },
+  "standard": {
+    "ignore": [
+    ]
+  },
+  "version": "0.0.0"
+}

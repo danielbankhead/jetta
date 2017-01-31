@@ -1,0 +1,26 @@
+{
+  "request": {
+    "dataLimit": 20971520,
+    "headers": {
+      "accept": "*/*",
+      "accept-encoding": "gzip, deflate",
+      "dnt": 1,
+      "user-agent": "Mozilla/5.0"
+    },
+    "progressLog": null,
+    "redirectLimit": 10,
+    "requestOptions": {
+      "method": "GET"
+    },
+    "timeLimit": 10000,
+    "urlParser": {
+      "addMissingProtocol": true
+    },
+    "useDefaultProgressLogger": false
+  },
+  "urlParser": {
+    "addMissingProtocol": false,
+    "localhostAllowed": false,
+    "protocolReplacement": "https"
+  }
+}

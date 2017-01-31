@@ -1,0 +1,110 @@
+{
+  "http-bad-response-code": {
+    "details": false,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-exceeded-data-limit-actual": {
+    "details": false,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-stream-read-error": {
+    "details": true,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-exceeded-data-limit-content-length": {
+    "details": false,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-gunzip-failed": {
+    "details": true,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-inflate-failed": {
+    "details": true,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-invalid-protocol": {
+    "details": false,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-invalid-url": {
+    "details": false,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-no-data-received": {
+    "details": false,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-request-aborted-client": {
+    "details": false,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-request-aborted-server": {
+    "details": false,
+    "message": {
+      "en": "The server aborted the request. The server may be busy or is having trouble with the request parameters."
+    }
+  },
+  "http-request-error": {
+    "details": true,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-request-timed-out-initial": {
+    "details": false,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-response-aborted-client": {
+    "details": true,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-response-error": {
+    "details": true,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-response-timed-out-during": {
+    "details": false,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-response-timed-out-initial": {
+    "details": false,
+    "message": {
+      "en": ""
+    }
+  },
+  "http-too-many-redirects": {
+    "details": false,
+    "message": {
+      "en": ""
+    }
+  }
+}
