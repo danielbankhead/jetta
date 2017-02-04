@@ -109,11 +109,11 @@ const invalid = [
   'http://10.1.1.254'
 ]
 
-valid.forEach(item => {if(up(item).valid === false) {console.log(item)} })
+valid.forEach(item => {if(up(item).isValid === false) {console.log(item)} })
 
 invalid.forEach(item => {
   const r = up(item, {addMissingProtocol: true})
-  if (r.valid === true) {
+  if (r.isValid === true) {
     console.log(`\`${item}\` hostname: \`${r.parsedURL.hostname}\``)
   }
 })

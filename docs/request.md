@@ -1,4 +1,4 @@
-- `request` (url[, options], callback[, currentRedirects])
+### `jetta.request` (url[, options], callback[, currentRedirects])
   - make an HTTP(S) request
   - Example:
   ```js

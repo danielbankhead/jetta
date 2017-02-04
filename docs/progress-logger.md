@@ -1,4 +1,4 @@
-- `ProgressLogger` CLASS
+### `jetta.ProgressLogger` CLASS
   - jetta's native STDOUT streaming progress logger
   - can use be used:
     - In `jetta.request` via `options.useDefaultProgressLogger = true`

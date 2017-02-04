@@ -1,5 +1,5 @@
 # Jetta
-## A fast and simple HTTP(S) request and URL-parsing library
+## A fast and simple HTTP(S) request and URL-parsing library ✈️
 
 [![Jetta by Altus Aero][shield-io-altusaero]][altusaero-github] [![npm version][shield-io-npm-version]][npm] [![npm total downloads][shield-io-npm-total-downloads]][npm] [![npm license][shield-io-npm-license]][npm] [![AppVeyor][shield-io-AppVeyor]][appveyor] [![Travis CI][shield-io-Travis-CI]][travis] [![Travis CI][shield-io-Coveralls]][coveralls] [![GitHub - Issues Open][shield-io-GitHub-Issues-Open]][github-issues] [![GitHub - Pull Requests Open][shield-io-GitHub-Pull-Requests-Open]][github-pulls] [![GitHub - Contributors][shield-io-GitHub-Contributors]][github-graphs-contributors] [![Standard - JavaScript Style Guide][shield-io-standard-style]][standardjs]
 
@@ -30,7 +30,6 @@
 ```js
 const jetta = require('jetta')
 
-// build-in URL parser
 jetta.request('altusaero.com', (error, results) => {
   if (error !== null) {
     // Results contains useful error details
@@ -43,8 +42,7 @@ jetta.request('altusaero.com', (error, results) => {
   }
 })
 
-// build-in URL parser
-jetta.urlParser('foo-bar').valid === false
+jetta.urlParser('foo-bar').isValid === false
 jetta.urlParser('127.0.0.12', {localhostAllowed: true}).isLocalhost === true
 jetta.urlParser('example.com', {addMissingProtocol: true}).parsedURL.href === 'https://example.com/'
 ```
@@ -97,110 +95,73 @@ jetta.request(url, {useDefaultProgressLogger: true}, (error, results) => {
 
 ## Usage
 
-`jetta` OBJECT
-  - `defaults` OBJECT
-    - the default options for `jetta.request` and `jetta.urlParser`
+`jetta.defaults` OBJECT
+  - the default options for `jetta.request` and `jetta.urlParser`
 
-  - `error` OBJECT
-    - the error information for an error, useful for:
-      - receiving additional information behind an error
-      - sending an error directly to a client in their native language
-      - debugging
-    - every key corresponds to `results.error.type` ('http-request-error') from a request when an error has occurred
-    - every object has the following attributes:
-      - `details` BOOLEAN
-        - determines if an error includes an `Error` object with extended stack details
-        - See `results.error.details` from a request when an error has occurred
-      - `message` OBJECT
-        - an object with messages in a specified language as an ISO 639-1 code, such as 'en' for English
-        - Example:
-        ```js
-        jetta.error['http-request-aborted-server'].message.en
-        // > 'The server aborted the request. The server may be busy or is having trouble with the request parameters.'
-        ```
+`jetta.error` OBJECT
+  - the error information for an error, useful for:
+    - receiving additional information behind an error
+    - sending an error directly to a client in their native language
+    - debugging
+  - every key corresponds to `results.error.type` ('http-request-error') from a request when an error has occurred
+  - every object has the following attributes:
+    - `details` BOOLEAN
+      - determines if an error includes an `Error` object with extended stack details
+      - See `results.error.details` from a request when an error has occurred
+    - `message` OBJECT
+      - an object with messages in a specified language as an ISO 639-1 code, such as 'en' for English
+      - Example:
+      ```js
+      jetta.error['http-request-aborted-server'].message.en
+      // > 'The server aborted the request. The server may be busy or is having trouble with the request parameters.'
+      ```
 
-  - `ProgressLogger` CLASS
-    - jetta's native STDOUT streaming progress logger
-    - can use be used:
-      - In `jetta.request` via `options.useDefaultProgressLogger = true`
-        - convenient
-      - In `jetta.request` via `options.progressLog = new ProgressLogger()`
-        - useful if you want to re-use multiple requests
-      - Outside of `jetta.request`, for any of your progress logging needs
-    - Example:
-    ```js
-    const progressLogger = new jetta.ProgressLogger()
-    ```
+`jetta.ProgressLogger` CLASS
+  - jetta's native STDOUT streaming progress logger
+  - can use be used:
+    - In `jetta.request` via `options.useDefaultProgressLogger = true`
+      - convenient
+    - In `jetta.request` via `options.progressLog = new ProgressLogger()`
+      - useful if you want to re-use multiple requests
+    - Outside of `jetta.request`, for any of your progress logging needs
+  - Example:
+  ```js
+  const progressLogger = new jetta.ProgressLogger()
+  ```
 
-    - Complete documentation can be found in [docs/progress-logger.md](docs/progress-logger.md).
+  - Complete documentation can be found in [docs/progress-logger.md](docs/progress-logger.md).
 
-  - `request` (url[, options], callback[, currentRedirects])
-    - make an HTTP(S) request
-    - Example:
-    ```js
-    jetta.request('altusaero.com', (error, results) => {
-      if (error !== null) {
-        throw error
-      } else {
-        const html = results.data.toString()
-        // ...
-      }
-    })
-    ```
+`jetta.request` (url[, options], callback[, currentRedirects])
+  - make an HTTP(S) request
+  - Example:
+  ```js
+  jetta.request('altusaero.com', (error, results) => {
+    if (error !== null) {
+      throw error
+    } else {
+      const html = results.data.toString()
+      // ...
+    }
+  })
+  ```
 
-    - Complete documentation can be found in [docs/request.md](docs/request.md).
+  - Complete documentation can be found in [docs/request.md](docs/request.md).
 
-  - `urlParser` (candidate[, options])
-    - Parse and validate URLs
+`jetta.urlParser` (candidate[, options])
+  - Parse and validate URLs
+  - Example:
+  ```js
+  const urlResults = jetta.urlParser('example.com/about/', {addMissingProtocol: true})
 
-    - `candidate` STRING | OBJECT
-      - The URL to parse and validate
-      - If STRING, will be via parsed
-      - If OBJECT:
-        - if an instance of `url.Url` (as in, node's [url](https://nodejs.org/api/url.html) module), it will not be parsed (to preserve performance), but will be further processed and validated
-        - else, will parse the `href` property of object
-      - Can be set to `null` if you want to pass options directly
-        - Useful if using `socketPath` in `options.requestOptions` for UNIX Domain Sockets or Named Pipes on Windows
+  urlResults.isLocalhost
+  // > false
+  urlResults.isValid
+  // > true
+  urlResults.parsedURL.protocol
+  // > 'https:'
+  ```
 
-    - `options` OBJECT _optional_
-      - Defaults can be found in `jetta.defaults.urlParser`
-
-      - `addMissingProtocol` BOOLEAN
-        - Determines if missing protocols should be added for parsing
-        - Example:
-        ```js
-        jetta.urlParser('example.com', {addMissingProtocol: true}).url
-        // > 'https://example.com'
-        ```
-
-      - `protocolReplacement` STRING
-        - The protocol to be added when the parsed url's protocol is missing and `addMissingProtocol === true`
-        - _NOTE_: It should be without colons and slashes. i.e. 'https' not 'https:' or 'https://'
-
-      - `localhostAllowed` BOOLEAN
-        - Determines if localhost URLs are considered valid
-        - Example:
-        ```js
-        jetta.urlParser('http://127.0.0.1', {localhostAllowed: true}).valid
-        // > true
-        jetta.urlParser('http://localhost', {localhostAllowed: false}).valid
-        // > false
-        jetta.urlParser('::1', {localhostAllowed: true}).valid
-        // > true
-        ```
-
-    - _return_ `results` OBJECT
-      - `options` OBJECT
-        - The options used to parse, process, and validate `candidate`
-
-      - `parsedURL` url.Url
-        - The parsed URL, an instance of node's [url](https://nodejs.org/api/url.html) module
-
-      - `url` STRING
-        - `candidate` - in standard URL form
-
-      - `valid` BOOLEAN
-        - Determines if `candidate` is valid, given the parameters
+  - Complete documentation can be found in [docs/url-parser.md](docs/url-parser.md).
 
 <!-- TODO:
   See [examples](examples).
@@ -224,7 +185,7 @@ We wanted a simple, flexible, and easy-to-use request library that didn't compro
 
 
 ## Notes
-  - this project will move from **alpha** to **beta**
+  - this project will move from **alpha** to **beta** after:
     - `tests` are currently under development - after there are finalized
     - Each error in `data/error.json` has a message in `en`.
 
