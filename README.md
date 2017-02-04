@@ -32,13 +32,14 @@ const jetta = require('jetta')
 
 jetta.request('altusaero.com', (error, results) => {
   if (error !== null) {
-    // Results contains useful error details
+    // Results contains useful error details to help debug
     console.dir(results.error)
+    throw error
   } else {
     // Results contain useful pieces of data - including response time, response headers, decompression info, and more
     const responseTime = results.time.response
     const html = results.data.toString()
-    // '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">...
+    // html = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">...
   }
 })
 
