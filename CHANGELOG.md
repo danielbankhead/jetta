@@ -1,3 +1,20 @@
+## [0.0.3]
+
+- ### Clarified introduction (#2)
+  - 590ead6627937f1c36fdd47e69fff10a998e8712
+  - Author: **Daniel Bankhead**
+  - Date: 2017-02-04 16:34:36 -0500
+
+- ### Clarified introduction
+  - 100de84e159a4cc34affe2afdcaa265677f25f0e
+  - Author: **Daniel Bankhead**
+  - Date: 2017-02-04 16:32:39 -0500
+
+- ### `jetta.urlResults().valid -> .isValid`
+  - fe702d17b5d885b9d38ed50bb39dcd4ce0732eea
+  - Author: **Daniel Bankhead**
+  - Date: 2017-02-04 16:25:37 -0500
+
 ## [0.0.2]
 
 - ### Initial alpha
