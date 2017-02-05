@@ -180,7 +180,7 @@ We wanted a simple, flexible, and easy-to-use request library that didn't compro
 
 ## Goals
   - keep it simple
-  - keep it fast - it's name is _jetta_, as in _jet stream_
+  - keep it fast - its name is _jetta_, as in _jet stream_
   - keep it secure
   - keep it lightweight (minimal dependencies)
 
