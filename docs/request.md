@@ -240,6 +240,14 @@
         const userAgent = results.requestOptionsFinal.headers['user-agent']
         ```
 
+      - `statusCode` INTEGER
+        - The final status code of the request
+        - Example:
+        ```js
+        const statusCode = results.statusCode
+        // > 200, 206, 404, etc.
+        ```
+
       - `time` OBJECT
         - `response` INTEGER
           - the time it took to download and process the response, in milliseconds
