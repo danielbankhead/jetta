@@ -1,3 +1,15 @@
+## [0.0.4]
+
+- ### Added `results.statusCode`
+  - 39f5160d36a3a49b174eacb122d8d1ae4f61fb0f
+  - Author: **Daniel Bankhead**
+  - Date: 2017-02-07 15:42:22 -0500
+
+- ### Grammar
+  - 140be40b094dea6bdb11fdf71a6aa3e8a6d48b9b
+  - Author: **Daniel Bankhead**
+  - Date: 2017-02-05 14:16:35 -0500
+
 ## [0.0.3]
 
 - ### Clarified introduction (#2)
