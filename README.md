@@ -32,7 +32,7 @@ const jetta = require('jetta')
 
 jetta.request('altusaero.com', (error, results) => {
   if (error !== null) {
-    // Results contains useful error details to help debug
+    // Results contain useful error details to help debug
     console.dir(results.error, {colors: true})
     throw error
   } else {
@@ -85,7 +85,9 @@ jetta.request(url, {useDefaultProgressLogger: true}, (error, results) => {
     throw error
   } else {
     // do stuff with results...
-    fs.writeFile(path.basename(results.url.parsedURL.path), results.data, (error) => {
+    const filename = path.basename(results.url.parsedURL.path)
+
+    fs.writeFile(filename, results.data, (error) => {
       if (error !== null) throw error
       console.log('done.')
     })
@@ -104,7 +106,7 @@ jetta.request(url, {useDefaultProgressLogger: true}, (error, results) => {
     - receiving additional information behind an error
     - sending an error directly to a client in their native language
     - debugging
-  - every key corresponds to `results.error.type` ('http-request-error') from a request when an error has occurred
+  - every key corresponds to `results.error.type` from a request when an error has occurred ('http-request-error', 'http-too-many-redirects', etc.)
   - every object has the following attributes:
     - `details` BOOLEAN
       - determines if an error includes an `Error` object with extended stack details
@@ -186,9 +188,7 @@ We wanted a simple, flexible, and easy-to-use request library that didn't compro
 
 
 ## Notes
-  - this project will move from **alpha** to **beta** after:
-    - `tests` are currently under development - after there are finalized
-    - Each error in `data/error.json` has a message in `en`.
+  - this project will move from **alpha** to **beta** after `tests` are completed.
 
 
 ## Credits

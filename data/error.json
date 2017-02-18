@@ -2,61 +2,49 @@
   "http-bad-response-code": {
     "details": false,
     "message": {
-      "en": ""
+      "en": "Request received a bad response code - check results.statusCode for more details."
     }
   },
   "http-exceeded-data-limit-actual": {
     "details": false,
     "message": {
-      "en": ""
-    }
-  },
-  "http-stream-read-error": {
-    "details": true,
-    "message": {
-      "en": ""
+      "en": "The actual data recieved was higher than the data limit."
     }
   },
   "http-exceeded-data-limit-content-length": {
     "details": false,
     "message": {
-      "en": ""
+      "en": "The content-length header was higher than the data limit - cancelled to not waste time."
     }
   },
   "http-gunzip-failed": {
     "details": true,
     "message": {
-      "en": ""
+      "en": "While the request succeeded zlib.gunzip has failed. You can see the compressed data in request.data."
     }
   },
   "http-inflate-failed": {
     "details": true,
     "message": {
-      "en": ""
+      "en": "While the request succeeded zlib.inflate has failed. You can see the compressed data in request.data."
     }
   },
   "http-invalid-protocol": {
     "details": false,
     "message": {
-      "en": ""
+      "en": "The protocol provided is invalid. Try 'http:', 'https:', UNIX domain socket, or named pipe instead."
     }
   },
   "http-invalid-url": {
     "details": false,
     "message": {
-      "en": ""
-    }
-  },
-  "http-no-data-received": {
-    "details": false,
-    "message": {
-      "en": ""
+      "en": "The URL provided is invalid."
     }
   },
   "http-request-aborted-client": {
     "details": false,
     "message": {
-      "en": ""
+      "en": "The request was aborted from the client-side before the server responded."
     }
   },
   "http-request-aborted-server": {
@@ -68,43 +56,55 @@
   "http-request-error": {
     "details": true,
     "message": {
-      "en": ""
+      "en": "An error occurred with the request. See details for more information."
     }
   },
   "http-request-timed-out-initial": {
     "details": false,
     "message": {
-      "en": ""
+      "en": "The request timed out while attempting to connect to the server."
     }
   },
   "http-response-aborted-client": {
     "details": true,
     "message": {
-      "en": ""
+      "en": "The request was aborted from the client-side after the server responded."
     }
   },
   "http-response-error": {
     "details": true,
     "message": {
-      "en": ""
+      "en": "An error occurred with the response. See details for more information."
     }
   },
   "http-response-timed-out-during": {
     "details": false,
     "message": {
-      "en": ""
+      "en": "The request timed out during the response. The server may be busy or the connection has dropped."
     }
   },
   "http-response-timed-out-initial": {
     "details": false,
     "message": {
-      "en": ""
+      "en": "The request timed out after the response, but before any data was recieved. The server may be busy or the connection has dropped."
+    }
+  },
+  "http-stream-read-error": {
+    "details": true,
+    "message": {
+      "en": "An error has occurred will reading from the given stream."
     }
   },
   "http-too-many-redirects": {
     "details": false,
     "message": {
-      "en": ""
+      "en": "Too many response redirects."
+    }
+  },
+  "http-unknown-content-encoding": {
+    "details": false,
+    "message": {
+      "en": "Unrecognized content-encoding. The data is included if you want"
     }
   }
 }

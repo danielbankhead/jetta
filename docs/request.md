@@ -97,6 +97,11 @@
         - `headers['content-type']`: 'application/json'
         - `method`: POST
 
+    - `preferredErrorLanguage` STRING
+      - The preferred language for any error messages that may occur.
+      - Should be an ISO 639-1 code, such as 'en' for English and 'fr' for French
+      - Falls back to English if preferred language unavailable
+
     - `progressLog` OBJECT
       - An object with with a `log` method
       - See `jetta.ProgressLogger` for details and ideas for using a custom progress logger
@@ -159,11 +164,12 @@
 
   - `callback` FUNCTION (error, results)
     - Returns `error` and `results` of the request
-    - The `error` argument is used for compatibility purposes as `results.error` carries a little more information
-      - See `jetta.error` for additional details on `results.error`
+
+      - _NOTE_: `results.error` may carry a bit more information
 
     - `error` OBJECT
       - if `null`, the request did not have an error
+      - else, an `Error` object, using `preferredErrorLanguage` if available
 
     - `results` OBJECT
       - The results of the response
@@ -194,7 +200,7 @@
 
       - `error` OBJECT
         - The error data, if any
-        - If `null`, great
+        - If `null`, _great_
         - Else, an OBJECT with:
           - `type` STRING
             - A precise error code used in jetta
@@ -205,16 +211,18 @@
             const messageInEnglish = jetta.error[results.error.type].message.en
             ```
 
-            - See `jetta.error` for additional details
-
           - `details` OBJECT
             - The native `Error` object
-            - Due to the nature of requests this may not always be available, so use `type` whenever `jetta.error[results.error.type].details === false`.
+            - Due to the nature of requests this may not always be available, thus set to `null`
 
-            - See `jetta.error` for additional details
+            - _NOTE_: correlates with `jetta.error[results.error.type].details === false`.
+
+          - `message` STRING
+            - The error message, using `preferredErrorLanguage` if available
 
       - `options` OBJECT
         - The options used for this request _before_ merging parameters
+        - Useful for debugging
 
         - _NOTE_: See `requestOptionsFinal` to see the finalized options used in the request
 
