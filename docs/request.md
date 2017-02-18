@@ -196,8 +196,6 @@
           - `using` STRING
             - The tool used to decompress the data
 
-        - _NOTE_: If `null` check `responseHeaders['content-encoding']` as it is possible the decompression was not available for this request
-
       - `error` OBJECT
         - The error data, if any
         - If `null`, _great_
