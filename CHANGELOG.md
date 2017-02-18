@@ -1,3 +1,15 @@
+## [0.0.5]
+
+- ### Always attempt to decompress data - even if an error has occurred
+  - d254f2cecbe70f8bebdcadaa4c33d59d70d9b998
+  - Author: **Daniel Bankhead**
+  - Date: 2017-02-18 13:14:40 -0500
+
+- ### Completed error.json for English and added preferredErrorLanguage
+  - f684dde66cc2d7a8ad41295fca7ef6bd5f82b21b
+  - Author: **Daniel Bankhead**
+  - Date: 2017-02-18 12:59:03 -0500
+
 ## [0.0.4]
 
 - ### Added `results.statusCode`
