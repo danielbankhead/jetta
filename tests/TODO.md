@@ -24,10 +24,12 @@ if (platform === 'win32') {
   socket = `/${testIdentifier}.sock`
 }
 
+} else if (results.parsedURL.hostname.includes('.') === false) {
+  return results
 
 
 // url
-// https://mathiasbynens.be/demo/url-regex
+// List extracted from: https://mathiasbynens.be/demo/url-regex
 const valid = [
   'http://foo.com/blah_blah',
   'http://foo.com/blah_blah/',
@@ -64,7 +66,8 @@ const valid = [
   'http://-.~_!$&\'()*+,;=:%40:80%2f::::::@example.com',
   'http://1337.net',
   'http://a.b-c.de',
-  'http://223.255.255.254'
+  'http://223.255.255.254',
+  'http://instance-data/latest/dynamic/instance-identity/document'
 ]
 
 const invalid = [
@@ -109,15 +112,15 @@ const invalid = [
   'http://10.1.1.254'
 ]
 
-valid.forEach(item => {if(up(item).isValid === false) {console.log(item)} })
-
-invalid.forEach(item => {
-  const r = up(item, {addMissingProtocol: true})
-  if (r.isValid === true) {
-    console.log(`\`${item}\` hostname: \`${r.parsedURL.hostname}\``)
+valid.forEach(item => {
+  if (jetta.urlParser(item).isValid === false) {
+    console.log(item)
   }
 })
 
-
-
+invalid.forEach(item => {
+  if (jetta.urlParser(item, {addMissingProtocol: true}).isValid === true) {
+    console.log(item)
+  }
+})
 ```
