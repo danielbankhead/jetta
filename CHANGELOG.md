@@ -1,3 +1,15 @@
+## [0.0.6]
+
+- ### Fixed a bug preventing hostnames from being validated w/o periods
+  - da337908012411d56e88dae8e115a3d7c3a5b399
+  - Author: **Daniel Bankhead**
+  - Date: 2017-03-03 20:26:18 -0500
+
+- ### FUTURE: `results.json`
+  - 6696ff58e8ecf4a0476c7efd62bc754439cf3c4d
+  - Author: **Daniel Bankhead**
+  - Date: 2017-03-03 20:10:29 -0500
+
 ## [0.0.5]
 
 - ### Always attempt to decompress data - even if an error has occurred
