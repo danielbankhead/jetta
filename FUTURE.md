@@ -7,6 +7,12 @@
     - compare based on time w/ diff by percent
     - run each command an appropriate amount of times
 
+  - parse JSON results
+    - `results.json`
+
+  - introductory video, with real-world examples
+    - on README.md
+
   - Streamable response
     - Useful for large responses
 
