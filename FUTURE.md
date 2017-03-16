@@ -2,11 +2,6 @@
   - examples/
     - add a few examples
 
-  - benchmark/
-    - should save (as JSON?) and compare existing results in [data/benchmark/](data/benchmark/)
-    - compare based on time w/ diff by percent
-    - run each command an appropriate amount of times
-
   - parse JSON results
     - `results.json`
 
