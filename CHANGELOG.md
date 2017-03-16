@@ -1,3 +1,10 @@
+## [0.0.7]
+
+- ### Performance & Readability > Benchmarks
+  - 1ec9dd581c54477af6adc4f681a85e6336f0c807
+  - Author: **Daniel Bankhead**
+  - Date: 2017-03-15 21:15:22 -0400
+
 ## [0.0.6]
 
 - ### Fixed a bug preventing hostnames from being validated w/o periods
