@@ -26,3 +26,4 @@ logs
 node_modules
 npm-debug.log*
 pids
+.jetta-public-suffix.json

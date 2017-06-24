@@ -188,7 +188,7 @@ We wanted a simple, flexible, and easy-to-use request library that didn't compro
 
 
 ## Notes
-  - this project will move from **alpha** to **beta** after `tests` are completed.
+  - this project will move from **alpha** to **beta** after tests are completed.
 
 
 ## Credits

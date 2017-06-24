@@ -8,9 +8,6 @@
   - introductory video, with real-world examples
     - on README.md
 
-  - Streamable response
-    - Useful for large responses
-
   - Error messages in more languages
     - See:
       - [data/error.json](data/error.json)

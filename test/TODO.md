@@ -6,7 +6,7 @@ Tests are under development
 'use strict'
 
 const jetta = require('../')
-const config = require('../data/tests/config')
+const config = require('../data/test/config')
 const tape = require('tape')
 
 const Bronze = require('bronze')
@@ -14,6 +14,10 @@ const idGen = new Bronze({name: `jetta-test`})
 const testIdentifier = idGen.generate()
 
 const platform = os.platform()
+
+
+
+
 
 // Use sockets for local testing
 let socket = null
@@ -24,8 +28,8 @@ if (platform === 'win32') {
   socket = `/${testIdentifier}.sock`
 }
 
-} else if (results.parsedURL.hostname.includes('.') === false) {
-  return results
+
+
 
 
 // url
@@ -112,14 +116,26 @@ const invalid = [
   'http://10.1.1.254'
 ]
 
+jetta = require('./')
+
 valid.forEach(item => {
   if (jetta.urlParser(item).isValid === false) {
     console.log(item)
   }
 })
 
+const strictInvalidOptions = {
+  allowDataAndFileProtocols: false,
+  allowWhitespaceBeforeFormatting: false,
+  ipAddressesAllowed: false,
+  protocolsAllowed: {
+    "http:": true,
+    "https:": true
+  }
+}
+
 invalid.forEach(item => {
-  if (jetta.urlParser(item, {addMissingProtocol: true}).isValid === true) {
+  if (jetta.urlParser(item, strictInvalidOptions).isValid === true) {
     console.log(item)
   }
 })

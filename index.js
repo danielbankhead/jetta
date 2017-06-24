@@ -1,16 +1,23 @@
 #! /usr/local/bin/node
 'use strict'
 
+const CookieManager = require('./lib/cookie-manager')
 const defaults = require('./data/defaults')
-const error = require('./data/error')
+const JettaError = require('./lib/error')
+const makeNestedDirectory = require('./lib/make-nested-directory')
 const ProgressLogger = require('./lib/progress-logger')
+const PublicSuffix = require('./lib/public-suffix')
 const request = require('./lib/request')
 const urlParser = require('./lib/url-parser')
 
 module.exports = {
+  CookieManager,
   defaults,
-  error,
+  JettaError,
+  makeNestedDirectory,
   ProgressLogger,
-  request,
+  PublicSuffix,
+  request: request.makeRequest,
+  requestPromise: request.makeRequestPromise,
   urlParser
 }

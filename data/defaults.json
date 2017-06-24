@@ -1,19 +1,71 @@
 {
+  "cookieManager": {
+    "allowExpiredSetCookie": true,
+    "fromHttpApi": true,
+    "isSecureEnv": true,
+    "isTopLevelBrowsingContext": true,
+    "preferredErrorLanguage": "en",
+    "publicSuffix": null,
+    "requestMethod": "GET",
+    "requestURL": null,
+    "thirdPartyCookiesAllowed": false,
+    "topLevelURL": null
+  },
+  "cookieManagerInstance": {
+    "cookies": {},
+    "publicSuffix": null,
+    "publicSuffixOptions": null,
+    "preferredErrorLanguage": "en",
+    "ready": false
+  },
+  "publicSuffix": {
+    "cacheLimit": 86400000,
+    "exceptionsIndex": {},
+    "index": {},
+    "lastUpdated": 0,
+    "list": null,
+    "path": ".jetta-public-suffix.json",
+    "preferredErrorLanguage": "en",
+    "ready": false,
+    "sources": [
+      "https://publicsuffix.org/list/public_suffix_list.dat","https://github.com/publicsuffix/list/raw/master/public_suffix_list.dat"
+    ],
+    "updating": false,
+    "updateTimeout": null
+  },
   "request": {
-    "dataLimit": 20971520,
-    "headers": {
-      "accept": "*/*",
-      "accept-encoding": "gzip, deflate",
-      "dnt": 1,
-      "user-agent": "Mozilla/5.0"
+    "agents": null,
+    "body": null,
+    "cookieManager": null,
+    "checksum": {
+      "algorithm": null,
+      "digest": "hex",
+      "verify": null
     },
+    "dataLimit": 20971520,
+    "decompressResponseIfPossible": true,
+    "engine": null,
+    "form": null,
+    "headers": {
+      "Accept": "*/*",
+      "Accept-Encoding": "gzip, deflate",
+      "DNT": "1",
+      "Upgrade-Insecure-Requests": "1",
+      "User-Agent": "Mozilla/5.0 (x64) jetta (Node.js)"
+    },
+    "json": null,
+    "onResponseData": null,
     "preferredErrorLanguage": "en",
     "progressLog": null,
     "redirectLimit": 10,
-    "requestOptions": {
-      "method": "GET"
+    "redirectsUpdateReferer": true,
+    "requestOptions": null,
+    "requestBodyStream": null,
+    "secureProtocols": {
+      "https:": true
     },
-    "timeLimit": 10000,
+    "timeLimit": 60000,
+    "toFile": null,
     "urlParser": {
       "addMissingProtocol": true
     },
@@ -21,7 +73,11 @@
   },
   "urlParser": {
     "addMissingProtocol": false,
+    "allowDataAndFileProtocols": true,
+    "allowWhitespaceBeforeFormatting": true,
+    "ipAddressesAllowed": true,
     "localhostAllowed": false,
+    "protocolsAllowed": null,
     "protocolReplacement": "https"
   }
 }
