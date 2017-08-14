@@ -21,7 +21,9 @@ const errorCategory = 'cookie'
 const b = new Bronze({name: 'test-cookie-manager'})
 let shared = {jetta, config, defaults, testTools, errorCategory, m, ev, packageInfo, b}
 
-tape('cookie-manager', {timeout: 60 * 1000}, (t) => {
+tape('cookie-manager', {timeout: 60 * 1000}, (test) => {
+  const t = testTools.lessVerboseOutput(test)
+
   async function asyncTests () {
     t.equal(typeof jetta.CookieManager, 'function', `jetta.CookieManager should be a function (class)`)
 

@@ -25,7 +25,9 @@ const ev = testTools.errorVerification
 const errorCategory = 'public-suffix'
 let shared = {jetta, config, defaults, testTools, errorCategory, m, ev}
 
-tape('public-suffix', {timeout: 60 * 1000}, (t) => {
+tape('public-suffix', {timeout: 60 * 1000}, (test) => {
+  const t = testTools.lessVerboseOutput(test)
+
   async function asyncTests () {
     t.equal(typeof jetta.PublicSuffix, 'function', `jetta.PublicSuffix should be a function (class)`)
 

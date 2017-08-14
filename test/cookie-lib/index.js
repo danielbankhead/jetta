@@ -18,7 +18,9 @@ const ev = testTools.errorVerification
 const errorCategory = 'cookie'
 const shared = {jetta, config, testTools, errorCategory, m, ev}
 
-tape('cookie-lib', (t) => {
+tape('cookie-lib', (test) => {
+  const t = testTools.lessVerboseOutput(test)
+
   t.equal(typeof jetta.cookieLib, 'object', `jetta.cookieLib should be a object`)
   t.deepEqual(Object.keys(jetta.cookieLib.safeHTTPMethods), config.safeHTTPMethods, `${config.safeHTTPMethods.join(', ')} should be the only safe HTTP Methods fot cookies`)
 

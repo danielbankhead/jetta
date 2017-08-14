@@ -12,7 +12,9 @@ const testTools = require('../tools')
 
 const m = testTools.generateTestMessage
 
-tape('url-parser', (t) => {
+tape('url-parser', (test) => {
+  const t = testTools.lessVerboseOutput(test)
+
   function validateResults (parentScope = [], results = {}) {
     const resultsKeys = Object.keys(results)
     const resultsOptionKeys = Object.keys(results.options)

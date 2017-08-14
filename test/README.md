@@ -68,6 +68,22 @@ tools/.test-request-custom-engines.js
 
 
 
+Less verbose output by default
+  change:
+
+  ```js
+  const t = testTools.lessVerboseOutput(test)
+  ```
+
+  to:
+
+  ```js
+  // const t = testTools.lessVerboseOutput(test)
+  const t = test
+  ```
+
+
+
 
 
 
