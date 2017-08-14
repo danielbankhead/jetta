@@ -1,23 +1,32 @@
 ## Future
   - examples/
     - add a few examples
+      - with videos and gifs
+      - progress logging
+        - by percent
+        - by bytes
+        - time example (estimated & total)
 
-  - parse JSON results
-    - `results.json`
+  - use `makeNestedDirectory` for request's `toFile` feature
+    - update `test/request/shared-options`
+      - consider file URLs, which contain encoded paths
 
-  - introductory video, with real-world examples
-    - on README.md
+  - introductory video or gif, with real-world examples
+    - on main README.md
+    - dedicated examples for each main feature in their dedicated sections
 
   - Error messages in more languages
+    - use [ISO 639-1 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
     - See:
-      - [data/error.json](data/error.json)
-      - ISO 639-1 codes
-        - https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+      - [lib/jetta-error.js](lib/jetta-error.js)
+
+  - HTTP/2 support
+    - [nodejs/http2](https://github.com/nodejs/http2)
 
   - Proxy support
     - Consider this from Electron: https://github.com/electron/electron/pull/7577
 
-  - Range option - an easy, convenient option for RANGE requests in bytes
+  - Range option - an easy, convenient option for RANGE requests, in bytes
     - `options.range` OBJECT
       - Can manually set range header in `options.headers` if interested in advanced features, such as multi-range (i.e. `range: bytes=0-512,1024-`)
 

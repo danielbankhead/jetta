@@ -27,3 +27,5 @@ node_modules
 npm-debug.log*
 pids
 .jetta-public-suffix.json
+data/test/.cached-public-suffix.dat
+tools/.test-request-custom-engines.js

@@ -1,5 +1,5 @@
 {
-  "cookieManager": {
+  "cookie": {
     "allowExpiredSetCookie": true,
     "fromHttpApi": true,
     "isSecureEnv": true,
@@ -11,8 +11,11 @@
     "thirdPartyCookiesAllowed": false,
     "topLevelURL": null
   },
-  "cookieManagerInstance": {
+  "cookieManager": {
     "cookies": {},
+    "maxCookieByteLength": 8192,
+    "maxCookies": 16384,
+    "maxCookiesPerDomain": 1024,
     "publicSuffix": null,
     "publicSuffixOptions": null,
     "preferredErrorLanguage": "en",
@@ -28,7 +31,8 @@
     "preferredErrorLanguage": "en",
     "ready": false,
     "sources": [
-      "https://publicsuffix.org/list/public_suffix_list.dat","https://github.com/publicsuffix/list/raw/master/public_suffix_list.dat"
+      "https://github.com/publicsuffix/list/raw/master/public_suffix_list.dat",
+      "https://publicsuffix.org/list/public_suffix_list.dat"
     ],
     "updating": false,
     "updateTimeout": null
@@ -36,48 +40,66 @@
   "request": {
     "agents": null,
     "body": null,
+    "cookie": null,
     "cookieManager": null,
     "checksum": {
       "algorithm": null,
       "digest": "hex",
-      "verify": null
+      "expected": null
     },
     "dataLimit": 20971520,
-    "decompressResponseIfPossible": true,
-    "engine": null,
+    "engines": null,
     "form": null,
-    "headers": {
-      "Accept": "*/*",
-      "Accept-Encoding": "gzip, deflate",
-      "DNT": "1",
-      "Upgrade-Insecure-Requests": "1",
-      "User-Agent": "Mozilla/5.0 (x64) jetta (Node.js)"
-    },
     "json": null,
     "onResponseData": null,
     "preferredErrorLanguage": "en",
-    "progressLog": null,
     "redirectLimit": 10,
+    "redirectsPreserveHeader": {
+      "Accept": 1,
+      "Accept-Charset": 1,
+      "Accept-Encoding": 1,
+      "Accept-Language": 1,
+      "Authorization": 2,
+      "Cache-Control": 1,
+      "Cookie": 2,
+      "DNT": 1,
+      "Forwarded": 1,
+      "From": 1,
+      "Max-Forwards": 1,
+      "Pragma": 1,
+      "Proxy-Authorization": 1,
+      "User-Agent": 1,
+      "Via": 1,
+      "X-Forwarded-For": 1
+    },
     "redirectsUpdateReferer": true,
-    "requestOptions": null,
+    "requestOptions": {
+      "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "DNT": "1",
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (x64) jetta (Node.js)"
+      },
+      "socketPath": null
+    },
     "requestBodyStream": null,
     "secureProtocols": {
       "https:": true
     },
+    "storeDataInResults": true,
     "timeLimit": 60000,
     "toFile": null,
     "urlParser": {
       "addMissingProtocol": true
-    },
-    "useDefaultProgressLogger": false
+    }
   },
   "urlParser": {
     "addMissingProtocol": false,
-    "allowDataAndFileProtocols": true,
     "allowWhitespaceBeforeFormatting": true,
     "ipAddressesAllowed": true,
-    "localhostAllowed": false,
+    "localhostAllowed": true,
     "protocolsAllowed": null,
-    "protocolReplacement": "https"
+    "protocolReplacement": "https:"
   }
 }

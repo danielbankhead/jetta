@@ -1,0 +1,109 @@
+'use strict'
+
+const sharedConfig = require('../../data/test/shared-config')
+
+const local = {
+  domainInOtherDomain: {
+    shouldBeFalse: [
+      [],
+      [
+        null
+      ],
+      [
+        ''
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        '',
+        ''
+      ],
+      [
+        '',
+        'example.com'
+      ],
+      [
+        'a',
+        'b'
+      ],
+      [
+        'a',
+        'ba'
+      ],
+      [
+        'ba',
+        'a'
+      ],
+      [
+        'example.com',
+        'sub.example.com'
+      ],
+      [
+        'sub.sample.example.com',
+        'sub.example.com'
+      ],
+      [
+        'some-example.com',
+        'example.com'
+      ],
+      [
+        'some.example.com',
+        'some.example.com.co'
+      ]
+    ],
+    shouldBeTrue: [
+      [
+        'a',
+        'a'
+      ],
+      [
+        'com',
+        'com'
+      ],
+      [
+        'example.com',
+        'com'
+      ],
+      [
+        'example.com',
+        '.example.com'
+      ],
+      [
+        '.example.com',
+        'example.com'
+      ],
+      [
+        '.example.com',
+        '.example.com'
+      ],
+      [
+        'sub.example.com',
+        '.example.com'
+      ],
+      [
+        '.sub.example.com',
+        '.example.com'
+      ],
+      [
+        'deep.nested.example.com',
+        'com'
+      ],
+      [
+        'deep.nested.example.com',
+        '.example.com'
+      ],
+      [
+        'deep.nested.example.com',
+        'deep.nested.example.com'
+      ],
+      [
+        'really.deep.nested.example.com',
+        '.deep.nested.example.com'
+      ]
+    ]
+  }
+}
+
+module.exports = Object.assign({}, sharedConfig, local)

@@ -1,0 +1,173 @@
+'use strict'
+
+const sharedConfig = require('../../data/test/shared-config')
+
+const local = {
+  expectedResultsKeys: [
+    'isLocalhost',
+    'isValid',
+    'options',
+    'parsedURL',
+    'url'
+  ],
+  expectedResultsOptionsKeys: [
+    'addMissingProtocol',
+    'allowWhitespaceBeforeFormatting',
+    'ipAddressesAllowed',
+    'localhostAllowed',
+    'protocolsAllowed',
+    'protocolReplacement'
+  ],
+  protocolReplacement: 'someprotocol:',
+  strictInvalidOptions: {
+    allowWhitespaceBeforeFormatting: false,
+    ipAddressesAllowed: false,
+    protocolsAllowed: {
+      'http:': true,
+      'https:': true
+    }
+  }
+}
+
+const validatorList = [
+  {
+    source: 'local',
+    valid: [
+      ['https://example.com/some path'],
+      ['https://example.com/some path', null],
+      [{hostname: 'example.com', protocol: 'https:'}],
+      [{hostname: 'example.com'}, {addMissingProtocol: true}],
+      ['data:,'],
+      ['data:,somedata'],
+      ['data:,', {protocolsAllowed: {'data:': true}}],
+      ['data:,somedata', {protocolsAllowed: {'data:': true}}],
+      ['file:///some/path/some/where'],
+      ['file://somehost/some/path/some/where'],
+      ['http://example.com'],
+      ['https://example.com'],
+      ['file:///some/path/some/where', {protocolsAllowed: {'file:': true}}],
+      ['file://somehost/some/path/some/where', {protocolsAllowed: {'file:': true}}],
+      ['http://1.1.1.1'],
+      ['http://somehost/some/path/some/where', {ipAddressesAllowed: false}],
+      ['https://somehost/some/path/some/where', {ipAddressesAllowed: false}],
+      ['http://localhost/'],
+      ['https://127.0.0.1'],
+      ['https://[::1]'],
+      ['http://somehost/some/path/some/where', {ipAddressesAllowed: false}],
+      ['https://somehost/some/path/some/where', {ipAddressesAllowed: false}]
+    ],
+    invalid: [
+      [],
+      [null, null],
+      ['https://example.com/some path', {allowWhitespaceBeforeFormatting: false}],
+      [{hostname: 'example.com'}, {}],
+      [{protocol: 'https:'}, {}],
+      [{protocol: 'https:'}, {addMissingProtocol: true}],
+      ['data:,', {protocolsAllowed: {}}],
+      ['data:,somedata', {protocolsAllowed: {}}],
+      ['file:///some/path/some/where', {protocolsAllowed: {}}],
+      ['file://somehost/some/path/some/where', {protocolsAllowed: {}}],
+      ['http://somehost/some/path/some/where', {protocolsAllowed: {'https:': true}}],
+      ['https://somehost/some/path/some/where', {protocolsAllowed: {}}],
+      ['example://somehost/some/path/some/where', {protocolsAllowed: {'http:': true, 'https:': true}}],
+      ['http://1.1.1.1', {ipAddressesAllowed: false}],
+      ['http://[::1]', {ipAddressesAllowed: false}],
+      ['https://1.1.1.1', {ipAddressesAllowed: false}],
+      ['https://[::1]', {ipAddressesAllowed: false}],
+      ['https://127.0.0.1', {ipAddressesAllowed: false, localhostAllowed: true}],
+      ['https://[::1]', {ipAddressesAllowed: false, localhostAllowed: true}],
+      ['http://localhost/', {localhostAllowed: false}],
+      ['https://127.0.0.1', {localhostAllowed: false}],
+      ['https://[::1]', {localhostAllowed: false}],
+      ['https://-apple', {}],
+      ['https://apple-', {}],
+      ['https://.apple', {}],
+      ['https://apple.', {}]
+    ]
+  },
+  {
+    source: 'https://mathiasbynens.be/demo/url-regex',
+    valid: [
+      ['http://foo.com/blah_blah'],
+      ['http://foo.com/blah_blah/'],
+      ['http://foo.com/blah_blah_(wikipedia)'],
+      ['http://foo.com/blah_blah_(wikipedia)_(again)'],
+      ['http://www.example.com/wpstyle/?p=364'],
+      ['https://www.example.com/foo/?bar=baz&inga=42&quux'],
+      ['http://✪df.ws/123'],
+      ['http://userid:password@example.com:8080'],
+      ['http://userid:password@example.com:8080/'],
+      ['http://userid@example.com'],
+      ['http://userid@example.com/'],
+      ['http://userid@example.com:8080'],
+      ['http://userid@example.com:8080/'],
+      ['http://userid:password@example.com'],
+      ['http://userid:password@example.com/'],
+      ['http://142.42.1.1/'],
+      ['http://142.42.1.1:8080/'],
+      ['http://➡.ws/䨹'],
+      ['http://⌘.ws'],
+      ['http://⌘.ws/'],
+      ['http://foo.com/blah_(wikipedia)#cite-1'],
+      ['http://foo.com/blah_(wikipedia)_blah#cite-1'],
+      ['http://foo.com/unicode_(✪)_in_parens'],
+      ['http://foo.com/(something)?after=parens'],
+      ['http://☺.damowmow.com/'],
+      ['http://code.google.com/events/#&product=browser'],
+      ['http://j.mp'],
+      ['ftp://foo.bar/baz'],
+      ['http://foo.bar/?q=Test%20URL-encoded%20stuff'],
+      ['http://مثال.إختبار'],
+      ['http://例子.测试'],
+      ['http://उदाहरण.परीक्षा'],
+      ["http://-.~_!$&'()*+,;=:%40:80%2f::::::@example.com"],
+      ['http://1337.net'],
+      ['http://a.b-c.de'],
+      ['http://223.255.255.254'],
+      ['http://instance-data/latest/dynamic/instance-identity/document']
+    ],
+    invalid: [
+      ['http://', local.strictInvalidOptions],
+      ['http://.', local.strictInvalidOptions],
+      ['http://..', local.strictInvalidOptions],
+      ['http://../', local.strictInvalidOptions],
+      ['http://?', local.strictInvalidOptions],
+      ['http://??', local.strictInvalidOptions],
+      ['http://??/', local.strictInvalidOptions],
+      ['http://#', local.strictInvalidOptions],
+      ['http://##', local.strictInvalidOptions],
+      ['http://##/', local.strictInvalidOptions],
+      ['http://foo.bar?q=Spaces should be encoded', local.strictInvalidOptions],
+      ['//', local.strictInvalidOptions],
+      ['//a', local.strictInvalidOptions],
+      ['///a', local.strictInvalidOptions],
+      ['///', local.strictInvalidOptions],
+      ['http:///a', local.strictInvalidOptions],
+      ['foo.com', local.strictInvalidOptions],
+      ['rdar://1234', local.strictInvalidOptions],
+      ['h://test', local.strictInvalidOptions],
+      ['http:// shouldfail.com', local.strictInvalidOptions],
+      [':// should fail', local.strictInvalidOptions],
+      ['http://foo.bar/foo(bar)baz quux', local.strictInvalidOptions],
+      ['ftps://foo.bar/', local.strictInvalidOptions],
+      ['http://-error-.invalid/', local.strictInvalidOptions],
+      ['http://a.b--c.de/', local.strictInvalidOptions],
+      ['http://-a.b.co', local.strictInvalidOptions],
+      ['http://a.b-.co', local.strictInvalidOptions],
+      ['http://0.0.0.0', local.strictInvalidOptions],
+      ['http://10.1.1.0', local.strictInvalidOptions],
+      ['http://10.1.1.255', local.strictInvalidOptions],
+      ['http://224.1.1.1', local.strictInvalidOptions],
+      ['http://1.1.1.1.1', local.strictInvalidOptions],
+      ['http://123.123.123', local.strictInvalidOptions],
+      ['http://3628126748', local.strictInvalidOptions],
+      ['http://.www.foo.bar/', local.strictInvalidOptions],
+      ['http://www.foo.bar./', local.strictInvalidOptions],
+      ['http://.www.foo.bar./', local.strictInvalidOptions],
+      ['http://10.1.1.1', local.strictInvalidOptions],
+      ['http://10.1.1.254', local.strictInvalidOptions]
+    ]
+  }
+]
+
+module.exports = Object.assign({}, sharedConfig, local, {validatorList})

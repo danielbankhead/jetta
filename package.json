@@ -8,15 +8,16 @@
     "Daniel Bankhead <dan@danielbankhead.com> (https://danielbankhead.com/)"
   ],
   "dependencies": {},
-  "description": "A fast and simple HTTP(S) request and URL-parsing library ✈️",
+  "description": "A fast, multi-protocol request library and toolkit ✈️",
   "devDependencies": {
+    "bronze": "^1.4.0",
     "coveralls": "^2.11.15",
     "nsp": "^2.6.2",
-    "nyc": "^11.0.2",
+    "nyc": "^11.1.0",
     "pre-commit": "^1.2.2",
-    "standard": "^10.0.2",
+    "standard": "^10.0.3",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
+    "tape": "^4.8.0"
   },
   "engines": {
     "node": ">=8.0.0",
@@ -46,7 +47,8 @@
     "IDN",
     "IDNA",
     "data",
-    "file"
+    "file",
+    "protocol"
   ],
   "license": "Apache-2.0",
   "main": "index.js",
@@ -69,20 +71,19 @@
   },
   "preferGlobal": false,
   "private": false,
+  "publishConfig": {
+    "tag": "latest"
+  },
   "repository": "altusaero/jetta",
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard",
     "nsp": "nsp check",
     "postversion": "git push && git push --tags",
-    "preversion": "node dev/changelog-preversion",
     "start": "node .",
-    "tape": "tape \"test/*.js\" | tap-spec",
-    "test": "npm run nsp && npm run lint && nyc --check-coverage --show-process-tree npm run tape",
-    "version": "node dev/changelog-version"
+    "tape": "tape test/*/ | tap-spec",
+    "test": "npm run nsp && npm run lint && nyc --check-coverage npm run tape"
   },
-  "standard": {
-    "ignore": []
-  },
+  "standard": {},
   "version": "0.0.7"
 }

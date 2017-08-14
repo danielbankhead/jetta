@@ -9,8 +9,11 @@
   - If you need help we can work through this during the PR process, but it will take additional time.
 - When it comes to performance vs readability the following order is preferred:
   - performance gains in an order of magnitude
-  - code readability
+  - code readability (including modern syntax)
 - Run tests before making proposed changes (we use [pre-commit](https://www.npmjs.com/package/pre-commit) to automate this step)
+- Update [CHANGELOG.md](CHANGELOG.md)
+  - no need to worry about the version header (1.0.0, 1.2.1, etc.) as this will be determined after collectively reviewing all of the pending commits to master
+- Add yourself to the contributors section in the `package.json`, if you'd like.
 - You must agree to the [Developer's Certificate of Origin](http://developercertificate.org) (found below).
 
 ## Style Guide
