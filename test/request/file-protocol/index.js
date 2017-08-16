@@ -23,11 +23,13 @@ async function fileProtocolTests (t = () => {}, parentScope = [], sharedState = 
   const fileData = 'apple'
   const fileDataHash = crypto.createHash('sha384').update(fileData).digest('base64')
 
-  const testFileURI = `file://${path.join(process.cwd(), b.generate())}`
-  const testFileFileURL = new url.URL(`file://${path.join(process.cwd(), b.generate())}`)
+  const currentPathPieces = process.cwd().split(path.sep)
+
+  const testFileURI = path.posix.join('file://', ...currentPathPieces, b.generate())
+  const testFileFileURL = new url.URL(path.posix.join('file://', ...currentPathPieces, b.generate()))
   const testFileInvalidURL = `file:%`
-  const testFileDirectory = new url.URL(`file://${path.join(process.cwd(), b.generate())}`)
-  const testFileNoExist = new url.URL(`file://${path.join(process.cwd(), b.generate())}`)
+  const testFileDirectory = new url.URL(path.posix.join('file://', ...currentPathPieces, b.generate()))
+  const testFileNoExist = new url.URL(path.posix.join('file://', ...currentPathPieces, b.generate()))
   const sharedOptionsParams = {
     testURL: testFileURI,
     sha384Base64Checksum: fileDataHash

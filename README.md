@@ -7,8 +7,8 @@
 [shield-io-npm-version]: https://img.shields.io/npm/v/jetta.svg?style=flat-square
 [shield-io-npm-total-downloads]: https://img.shields.io/npm/dt/jetta.svg?style=flat-square
 [shield-io-npm-license]: https://img.shields.io/npm/l/jetta.svg?style=flat-square
-[shield-io-AppVeyor]: https://img.shields.io/appveyor/ci/DanielBankhead/jetta.svg?style=flat-square&label=appveyor
-[shield-io-Travis-CI]: https://img.shields.io/travis/AltusAero/jetta.svg?style=flat-square&label=travis
+[shield-io-AppVeyor]: https://img.shields.io/appveyor/ci/DanielBankhead/jetta/master.svg?style=flat-square&label=appveyor
+[shield-io-Travis-CI]: https://img.shields.io/travis/AltusAero/jetta/master.svg?style=flat-square&label=travis
 [shield-io-Coveralls]: https://img.shields.io/coveralls/AltusAero/jetta.svg?style=flat-square
 [shield-io-GitHub-Issues-Open]: https://img.shields.io/github/issues-raw/altusaero/jetta.svg?style=flat-square
 [shield-io-GitHub-Pull-Requests-Open]: https://img.shields.io/github/issues-pr-raw/altusaero/jetta.svg?style=flat-square
