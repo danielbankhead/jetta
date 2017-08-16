@@ -17,13 +17,13 @@ tape('domain-lib', (t) => {
   for (let i = 0, len = config.domainInOtherDomain.shouldBeFalse.length; i < len; i++) {
     const group = config.domainInOtherDomain.shouldBeFalse[i]
 
-    t.false(jetta.domainLib.domainInOtherDomain(group[0], group[1]), m([group], `should be \`false\``))
+    t.false(jetta.domainLib.domainInOtherDomain(group[0], group[1]), m(group, `should be \`false\``))
   }
 
   for (let i = 0, len = config.domainInOtherDomain.shouldBeTrue.length; i < len; i++) {
     const group = config.domainInOtherDomain.shouldBeTrue[i]
 
-    t.true(jetta.domainLib.domainInOtherDomain(group[0], group[1]), m([group], `should be \`true\``))
+    t.true(jetta.domainLib.domainInOtherDomain(group[0], group[1]), m(group, `should be \`true\``))
   }
 
   t.end()

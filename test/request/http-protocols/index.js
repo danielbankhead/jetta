@@ -116,28 +116,31 @@ async function httpProtocolsTests (t = () => {}, parentScope = [], sharedState =
 
     async function requestBodyStreamTests () {
       const requestBodyStreamScope = [...nestedScope, 'requestBodyStream']
+      const expectHTTPSStreamErrorOnWindows = process.platform === 'win32' && protocol === 'https'
 
       const fileStream = fs.createReadStream(config.httpProtocols.readableStreamFilePath)
 
-      const requestBodyStreamResults = await uniformResultsExecutor(t, requestBodyStreamScope, rParams(true, 'bodyReflect', null, {requestBodyStream: fileStream}))
+      const requestBodyStreamResults = await uniformResultsExecutor(t, requestBodyStreamScope, rParams(expectHTTPSStreamErrorOnWindows === false, 'bodyReflect', null, {requestBodyStream: fileStream}))
 
-      t.equal(requestBodyStreamResults.data.toString(), fs.readFileSync(config.httpProtocols.readableStreamFilePath).toString(), m(requestBodyStreamScope, `server should receive the correct request body from stream`))
-      t.equal(requestBodyStreamResults.options.requestOptions.method, 'POST', m(requestBodyStreamScope, `method should be POST by default`))
+      if (expectHTTPSStreamErrorOnWindows === false) {
+        t.equal(requestBodyStreamResults.data.toString(), fs.readFileSync(config.httpProtocols.readableStreamFilePath).toString(), m(requestBodyStreamScope, `server should receive the correct request body from stream`))
+        t.equal(requestBodyStreamResults.options.requestOptions.method, 'POST', m(requestBodyStreamScope, `method should be POST by default`))
 
-      await uniformResultsExecutor(t, requestBodyStreamScope, rParams(true, 'bodyReflect', null, {
-        requestBodyStream: fs.createReadStream(config.httpProtocols.readableStreamFilePath),
-        requestOptions: {
-          headers: {
-            'Transfer-Encoding': 'chunked'
+        await uniformResultsExecutor(t, requestBodyStreamScope, rParams(true, 'bodyReflect', null, {
+          requestBodyStream: fs.createReadStream(config.httpProtocols.readableStreamFilePath),
+          requestOptions: {
+            headers: {
+              'Transfer-Encoding': 'chunked'
+            }
           }
-        }
-      }))
+        }))
 
-      await uniformResultsExecutor(t, [...requestBodyStreamScope, 'stream ended'], rParams(false, 'bodyReflect', null, {requestBodyStream: fileStream}))
+        await uniformResultsExecutor(t, [...requestBodyStreamScope, 'stream ended'], rParams(false, 'bodyReflect', null, {requestBodyStream: fileStream}))
 
-      await uniformResultsExecutor(t, [...requestBodyStreamScope, 'stream error'], rParams(false, 'bodyReflect', null, {requestBodyStream: fs.createReadStream('')}))
+        await uniformResultsExecutor(t, [...requestBodyStreamScope, 'stream error'], rParams(false, 'bodyReflect', null, {requestBodyStream: fs.createReadStream('')}))
 
-      await uniformResultsExecutor(t, [...requestBodyStreamScope, 'invalid stream'], rParams(false, 'bodyReflect', null, {requestBodyStream: {}}))
+        await uniformResultsExecutor(t, [...requestBodyStreamScope, 'invalid stream'], rParams(false, 'bodyReflect', null, {requestBodyStream: {}}))
+      }
     }
 
     async function contentEncodingTests () {
@@ -527,12 +530,12 @@ async function httpProtocolsTests (t = () => {}, parentScope = [], sharedState =
     await sharedOptionsTests(t, nestedScope, Object.assign({}, sharedState, {sharedOptionsParams, engineConfig}))
   }
 
-  if (engineConfig === undefined || typeof engineConfig.engines['https:'] === 'function') {
-    await protocolTest('https')
-  }
-
   if (engineConfig === undefined || typeof engineConfig.engines['http:'] === 'function') {
     await protocolTest('http')
+  }
+
+  if (engineConfig === undefined || typeof engineConfig.engines['https:'] === 'function') {
+    await protocolTest('https')
   }
 }
 
