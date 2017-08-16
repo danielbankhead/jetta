@@ -107,7 +107,6 @@ async function uniformResultsExecutor (t = () => {}, parentScope = [], sharedSta
           console.dir(error, {depth: 10})
         }
 
-
         if (callCount > 1) {
           t.fail(m(scope, `called more than once`))
         }
