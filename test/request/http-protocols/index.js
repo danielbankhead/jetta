@@ -527,12 +527,12 @@ async function httpProtocolsTests (t = () => {}, parentScope = [], sharedState =
     await sharedOptionsTests(t, nestedScope, Object.assign({}, sharedState, {sharedOptionsParams, engineConfig}))
   }
 
-  if (engineConfig === undefined || typeof engineConfig.engines['http:'] === 'function') {
-    await protocolTest('http')
-  }
-
   if (engineConfig === undefined || typeof engineConfig.engines['https:'] === 'function') {
     await protocolTest('https')
+  }
+
+  if (engineConfig === undefined || typeof engineConfig.engines['http:'] === 'function') {
+    await protocolTest('http')
   }
 }
 
