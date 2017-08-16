@@ -13,6 +13,7 @@ async function httpProtocolsTests (t = () => {}, parentScope = [], sharedState =
   async function protocolTest (protocol = '') {
     const nestedScope = [...scope, protocol]
     const serverSet = servers[protocol]
+    const expectHTTPSStreamErrorOnWindows = process.platform === 'win32' && protocol === 'https'
     let sharedOptionsParams = {
       testURL: null,
       sha384Base64Checksum: crypto.createHash('sha384').update(config.httpProtocols.jsonResponse.stringified).digest('base64'),
@@ -116,7 +117,6 @@ async function httpProtocolsTests (t = () => {}, parentScope = [], sharedState =
 
     async function requestBodyStreamTests () {
       const requestBodyStreamScope = [...nestedScope, 'requestBodyStream']
-      const expectHTTPSStreamErrorOnWindows = process.platform === 'win32' && protocol === 'https'
 
       const fileStream = fs.createReadStream(config.httpProtocols.readableStreamFilePath)
 
@@ -347,12 +347,14 @@ async function httpProtocolsTests (t = () => {}, parentScope = [], sharedState =
         options.body = null
         options.requestBodyStream = fs.createReadStream(config.httpProtocols.readableStreamFilePath)
 
-        const requestBodyStreamRedirectScope = [...nestedRedirectsScope, 'redirect with options.requestBodyStream']
+        if (expectHTTPSStreamErrorOnWindows === false) {
+          const requestBodyStreamRedirectScope = [...nestedRedirectsScope, 'redirect with options.requestBodyStream']
 
-        if (redirectCode === 307 || redirectCode === 308) {
-          await redirectExecutor(t, requestBodyStreamRedirectScope, rParams(false, 'redirectAbsolute', null, options))
-        } else {
-          await redirectExecutor(t, requestBodyStreamRedirectScope, rParams(true, 'redirectAbsolute', null, options))
+          if (redirectCode === 307 || redirectCode === 308) {
+            await redirectExecutor(t, requestBodyStreamRedirectScope, rParams(false, 'redirectAbsolute', null, options))
+          } else {
+            await redirectExecutor(t, requestBodyStreamRedirectScope, rParams(true, 'redirectAbsolute', null, options))
+          }
         }
 
         options.requestBodyStream = null
