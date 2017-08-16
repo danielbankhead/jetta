@@ -26,6 +26,10 @@ let shared = {jetta, config, defaults, testTools, errorCategory, m, ev, b, serve
 tape('request', {timeout: 5 * 60 * 1000}, (test) => {
   const t = testTools.lessVerboseOutput(test)
 
+  process.on('unhandledRejection', (error) => {
+    throw error
+  })
+
   async function asyncTests () {
     t.equal(typeof jetta.request, 'function', `jetta.request should be a function`)
     t.equal(typeof jetta.requestPromise, 'function', `jetta.requestPromise should be a function`)

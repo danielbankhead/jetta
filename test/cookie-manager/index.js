@@ -24,6 +24,10 @@ let shared = {jetta, config, defaults, testTools, errorCategory, m, ev, packageI
 tape('cookie-manager', {timeout: 60 * 1000}, (test) => {
   const t = testTools.lessVerboseOutput(test)
 
+  process.on('unhandledRejection', (error) => {
+    throw error
+  })
+
   async function asyncTests () {
     t.equal(typeof jetta.CookieManager, 'function', `jetta.CookieManager should be a function (class)`)
 

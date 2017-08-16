@@ -28,6 +28,10 @@ let shared = {jetta, config, defaults, testTools, errorCategory, m, ev}
 tape('public-suffix', {timeout: 60 * 1000}, (test) => {
   const t = testTools.lessVerboseOutput(test)
 
+  process.on('unhandledRejection', (error) => {
+    throw error
+  })
+
   async function asyncTests () {
     t.equal(typeof jetta.PublicSuffix, 'function', `jetta.PublicSuffix should be a function (class)`)
 
