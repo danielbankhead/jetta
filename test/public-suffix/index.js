@@ -25,9 +25,7 @@ const ev = testTools.errorVerification
 const errorCategory = 'public-suffix'
 let shared = {jetta, config, defaults, testTools, errorCategory, m, ev}
 
-tape('public-suffix', {timeout: 60 * 1000}, (test) => {
-  const t = testTools.lessVerboseOutput(test)
-
+tape('public-suffix', {timeout: 60 * 1000}, (t) => {
   process.on('unhandledRejection', (error) => {
     throw error
   })

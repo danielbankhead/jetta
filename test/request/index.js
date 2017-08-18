@@ -23,9 +23,7 @@ const errorCategory = 'request'
 const b = new Bronze({name: 'test-request'})
 let shared = {jetta, config, defaults, testTools, errorCategory, m, ev, b, servers: {http: {}, https: {}}}
 
-tape('request', {timeout: 5 * 60 * 1000}, (test) => {
-  const t = testTools.lessVerboseOutput(test)
-
+tape('request', {timeout: 5 * 60 * 1000}, (t) => {
   process.on('unhandledRejection', (error) => {
     throw error
   })

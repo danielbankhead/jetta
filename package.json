@@ -16,7 +16,7 @@
     "nyc": "^11.1.0",
     "pre-commit": "^1.2.2",
     "standard": "^10.0.3",
-    "tap-spec": "^4.1.1",
+    "tap-summary": "^3.0.2",
     "tape": "^4.8.0"
   },
   "engines": {
@@ -81,7 +81,7 @@
     "nsp": "nsp check",
     "postversion": "git push && git push --tags",
     "start": "node .",
-    "tape": "tape test/*/ | tap-spec",
+    "tape": "tape test/*/ | tap-summary --no-progress",
     "test": "npm run nsp && npm run lint && nyc --check-coverage npm run tape"
   },
   "standard": {},

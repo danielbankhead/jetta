@@ -2,9 +2,24 @@
 
 To ensure a reliability and 100% coverage, we've developed a thorough, modular test suite that's extensible and easy to maintain.
 
+To run the complete test suite simply use:
+```sh
+$ npm test
+```
+
 Tests are divided into categories, denoted by their folder (i.e. `cookie-lib`, `cookie-manager`, `request`, etc.). Each are isolated and share no state between each other - this way they can be tested independently via npm's [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) tool (included with npm 5.2.0 or later). Example:
 ```sh
-$ npx tape test/request/ | npx tap-spec
+$ npx tape test/request/ | npx tap-summary
+```
+
+To make tests less verbose use:
+```sh
+$ npx tape test/request/ | npx tap-summary --no-progress
+```
+
+More verbose use:
+```sh
+$ npx tape test/request/
 ```
 
 If a test crash you can debug via `node --trace-warnings`. Example:
@@ -12,14 +27,9 @@ If a test crash you can debug via `node --trace-warnings`. Example:
 $ node --trace-warnings test/request/
 ```
 
-To run the complete test suite simply use:
-```sh
-$ npm test
-```
-
 Some tests, such as `request`, will temporarily create files, folders, and sockets in the current directory. These do no harm, but if a test crash they may make a mess. You can use something like the following example to quickly clean things up:
 ```sh
-$ rm -f *.sock && npx tape test/request/ | npx tap-spec
+$ rm -f *.sock && npx tape test/request/ | npx tap-summary
 ```
 
 After running some tests you may notice that messages are 'scoped' so that you may trace exactly where something has occurred.
@@ -76,19 +86,6 @@ module.exports = customEngines
 ```
 
 You can run `npm test` to run the full test suite or `node test/request/` only test the request features. Starting off you may save time by testing the `node test/request/` for issues first.
-
-
-### Test Verbosity
-
-By default tests are not very verbose - we've ran into log limit issues on Travis-CI because we've exceeded their 4MB limit. To make tests more verbose for local testing change the following in the root of each test (where available):
-```js
-const t = testTools.lessVerboseOutput(test)
-```
-to:
-```js
-// const t = testTools.lessVerboseOutput(test)
-const t = test
-```
 
 
 ### Static Test Files
