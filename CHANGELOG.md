@@ -1,80 +1,40 @@
-## [0.0.7]
+## [1.0.0](https://github.com/AltusAero/jetta/releases/tag/v1.0.0)
 
-- ### Performance & Readability > Benchmarks
-  - 1ec9dd581c54477af6adc4f681a85e6336f0c807
-  - Author: **Daniel Bankhead**
-  - Date: 2017-03-15 21:15:22 -0400
+A complete rewrite with tons of new features
 
-## [0.0.6]
+**Breaking Changes**
+  - Limited use cases are backwards compatible with v0.0.x
 
-- ### Fixed a bug preventing hostnames from being validated w/o periods
-  - da337908012411d56e88dae8e115a3d7c3a5b399
-  - Author: **Daniel Bankhead**
-  - Date: 2017-03-03 20:26:18 -0500
+## [0.0.7](https://github.com/AltusAero/jetta/releases/tag/v0.0.7)
 
-- ### FUTURE: `results.json`
-  - 6696ff58e8ecf4a0476c7efd62bc754439cf3c4d
-  - Author: **Daniel Bankhead**
-  - Date: 2017-03-03 20:10:29 -0500
+- [Performance & Readability > Benchmarks](https://github.com/AltusAero/jetta/commit/1ec9dd581c54477af6adc4f681a85e6336f0c807)
 
-## [0.0.5]
+## [0.0.6](https://github.com/AltusAero/jetta/releases/tag/v0.0.6)
 
-- ### Always attempt to decompress data - even if an error has occurred
-  - d254f2cecbe70f8bebdcadaa4c33d59d70d9b998
-  - Author: **Daniel Bankhead**
-  - Date: 2017-02-18 13:14:40 -0500
+- [Fixed a bug preventing hostnames from being validated w/o periods](https://github.com/AltusAero/jetta/commit/da337908012411d56e88dae8e115a3d7c3a5b399)
+- [FUTURE: `results.json`](https://github.com/AltusAero/jetta/commit/6696ff58e8ecf4a0476c7efd62bc754439cf3c4d)
 
-- ### Completed error.json for English and added preferredErrorLanguage
-  - f684dde66cc2d7a8ad41295fca7ef6bd5f82b21b
-  - Author: **Daniel Bankhead**
-  - Date: 2017-02-18 12:59:03 -0500
+## [0.0.5](https://github.com/AltusAero/jetta/releases/tag/v0.0.5)
 
-## [0.0.4]
+- [Always attempt to decompress data - even if an error has occurred](https://github.com/AltusAero/jetta/commit/d254f2cecbe70f8bebdcadaa4c33d59d70d9b998)
+- [Completed error.json for English and added preferredErrorLanguage](https://github.com/AltusAero/jetta/commit/f684dde66cc2d7a8ad41295fca7ef6bd5f82b21b)
 
-- ### Added `results.statusCode`
-  - 39f5160d36a3a49b174eacb122d8d1ae4f61fb0f
-  - Author: **Daniel Bankhead**
-  - Date: 2017-02-07 15:42:22 -0500
+## [0.0.4](https://github.com/AltusAero/jetta/releases/tag/v0.0.4)
 
-- ### Grammar
-  - 140be40b094dea6bdb11fdf71a6aa3e8a6d48b9b
-  - Author: **Daniel Bankhead**
-  - Date: 2017-02-05 14:16:35 -0500
+- [Added `results.statusCode`](https://github.com/AltusAero/jetta/commit/39f5160d36a3a49b174eacb122d8d1ae4f61fb0f)
+- [Grammar](https://github.com/AltusAero/jetta/commit/140be40b094dea6bdb11fdf71a6aa3e8a6d48b9b)
 
-## [0.0.3]
+## [0.0.3](https://github.com/AltusAero/jetta/releases/tag/v0.0.3)
 
-- ### Clarified introduction (#2)
-  - 590ead6627937f1c36fdd47e69fff10a998e8712
-  - Author: **Daniel Bankhead**
-  - Date: 2017-02-04 16:34:36 -0500
+- [Clarified introduction (#2)](https://github.com/AltusAero/jetta/commit/590ead6627937f1c36fdd47e69fff10a998e8712)
+- [Clarified introduction](https://github.com/AltusAero/jetta/commit/100de84e159a4cc34affe2afdcaa265677f25f0e)
+- [`jetta.urlResults().valid -> .isValid`](https://github.com/AltusAero/jetta/commit/fe702d17b5d885b9d38ed50bb39dcd4ce0732eea)
 
-- ### Clarified introduction
-  - 100de84e159a4cc34affe2afdcaa265677f25f0e
-  - Author: **Daniel Bankhead**
-  - Date: 2017-02-04 16:32:39 -0500
+## [0.0.2](https://github.com/AltusAero/jetta/releases/tag/v0.0.2)
 
-- ### `jetta.urlResults().valid -> .isValid`
-  - fe702d17b5d885b9d38ed50bb39dcd4ce0732eea
-  - Author: **Daniel Bankhead**
-  - Date: 2017-02-04 16:25:37 -0500
+- [Updated notes for tests](https://github.com/AltusAero/jetta/commit/742cae729a69fb2e5207aedffa2bd98ea0b1841b)
+- [Updated documentation](https://github.com/AltusAero/jetta/commit/db01e07bcdbcbded1d69250d824ed90a39d8a9d1)
 
-## [0.0.2]
+## [0.0.1](https://github.com/AltusAero/jetta/releases/tag/v0.0.1)
 
-- ### Initial alpha
-  - 963fcb1218d0f0cd445abdf367c2c73c5f528d4c
-  - Author: **Daniel Bankhead**
-  - Date: 2017-01-31 21:29:27 -0500
-
-- ### Updated notes for tests
-  - 742cae729a69fb2e5207aedffa2bd98ea0b1841b
-  - Author: **Daniel Bankhead**
-  - Date: 2017-01-31 21:25:57 -0500
-
-- ### Updated documentation
-  - db01e07bcdbcbded1d69250d824ed90a39d8a9d1
-  - Author: **Daniel Bankhead**
-  - Date: 2017-01-31 21:23:10 -0500
-
-## [0.0.1]
-
-Initial alpha.
+- Initial alpha.

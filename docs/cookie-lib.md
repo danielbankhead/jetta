@@ -7,9 +7,9 @@
 
   - Options for `jetta.cookieLib.parse*` and `jetta.cookieLib.stringify*` can be found at [cookie-options.md](cookie-options.md)
   - All options are optional (defaults can be found in `jetta.defaults.cookie`)
+  - All methods may throw an instance of `JettaError` if something is invalid.
 
-  - `ParsedCookieHeader` CLASS
-    - Represents a parsed Cookie header
+  - `ParsedCookieHeader` CLASS - represents a parsed Cookie header
     - Handy for using with `instanceof` and *instance*`.constructor` throughout your codebase
 
     - _instance_
@@ -17,7 +17,6 @@
       - `value` (alias `Value`) STRING
 
       - Aliases are getters and setters
-
   - `ParsedSetCookieHeader` CLASS
     - Represents a parsed Set-Cookie header
     - Handy for using with `instanceof` and *instance*`.constructor` throughout your codebase
@@ -38,8 +37,8 @@
       - Any other cookie attributes/information will be passed as-is
         - `true` if no value, string otherwise
 
-  - `parseCookie` FUNCTION (`cookieString` STRING[, `options` OBJECT])
-    - Parses the value from a Cookie header into an array of objects - each with (at least) a name and value
+  - `parseCookie` FUNCTION (`cookieString` STRING[, `options` OBJECT]) - parses the value from a Cookie header into an array of objects
+    - Each object is an instance of `jetta.cookieLib.ParsedCookieHeader` with name and value
     - Example:
       ```js
       jetta.cookieLib.parseCookie('user=bob; color=blue')
@@ -49,8 +48,7 @@
       ```
 
     - _return_ ARRAY<_instanceof_ `jetta.cookieLib.ParsedCookieHeader`>
-  - `parseCookieKV` FUNCTION (`cookieString` STRING[, `options` OBJECT])
-    - Parses the value from a Cookie header into a key-value object, where key is the cookie's name
+  - `parseCookieKV` FUNCTION (`cookieString` STRING[, `options` OBJECT]) - parses the value from a Cookie header into a key-value object, where key is the cookie's name
     - Example:
       ```js
       jetta.cookieLib.parseCookieKV('user=bob; color=blue')
@@ -58,8 +56,7 @@
       ```
 
     - _return_ OBJECT
-  - `parseSetCookie` FUNCTION (`cookieString` STRING[, `options` OBJECT])
-    - Parses the value from a Set-Cookie header - into an object with various cookie attributes
+  - `parseSetCookie` FUNCTION (`cookieString` STRING[, `options` OBJECT]) - parses the value from a Set-Cookie header - into an object with various cookie attributes
     - Example:
       ```js
       jetta.cookieLib.parseSetCookie('id=1502909778285-2-4892-bob-1a; expires=Thu, 01 Jul 2021 04:00:00 GMT; path=/; domain=.example.com; HttpOnly; Secure')
@@ -77,8 +74,7 @@
       ```
 
     - _return_ _instanceof_ `jetta.cookieLib.ParsedSetCookieHeader`
-  - `stringifyCookie` FUNCTION (`cookieList` ARRAY<OBJECT>[, `options` OBJECT])
-    - Stringifies an array of objects - into a value for a cookie header
+  - `stringifyCookie` FUNCTION (`cookieList` ARRAY<OBJECT>[, `options` OBJECT]) - stringifies an array of objects - into a value for a cookie header
     - The objects in the array passed to the function may be:
       - _instanceof_ `jetta.cookieLib.ParsedCookieHeader`
       - _instanceof_ `jetta.cookieLib.ParsedSetCookieHeader`
@@ -91,8 +87,7 @@
       ```
 
      - _return_ STRING
-  - `stringifyCookieKV` FUNCTION (`cookieKeyValues` OBJECT[, `options` OBJECT])
-    - Stringifies an object of key-value attributes into a value for a cookie header (where key = cookie's name)
+  - `stringifyCookieKV` FUNCTION (`cookieKeyValues` OBJECT[, `options` OBJECT]) - stringifies an object of key-value attributes into a value for a cookie header (where key = cookie's name)
     - Removes any unnecessary wrapping double-quotes around the value
     - Example:
       ```js
@@ -101,8 +96,7 @@
       ```
 
     - _return_ STRING
-  - `stringifySetCookie` FUNCTION (`cookie` OBJECT[, `options` OBJECT])
-    - Stringifies a cookie-like object into a string to be used with a Set-Cookie header
+  - `stringifySetCookie` FUNCTION (`cookie` OBJECT[, `options` OBJECT]) - stringifies a cookie-like object into a string to be used with a Set-Cookie header
     - Removes any unnecessary wrapping double-quotes around the value
     - Can pass an _instanceof_ `jetta.cookieLib.ParsedSetCookieHeader` or Object
     - If passing an Object:
@@ -117,24 +111,21 @@
       ```
 
     - _return_ STRING
-  - `safeHTTPMethods` OBJECT
-    - An an object of HTTP methods that are considered to be 'safe'
+  - `safeHTTPMethods` OBJECT - an an object of HTTP methods that are considered to be 'safe'
     - Example:
       ```js
       jetta.cookieLib.safeHTTPMethods.GET === true
       jetta.cookieLib.safeHTTPMethods.POST === undefined
       jetta.cookieLib.safeHTTPMethods.UNKNOWN_METHOD === undefined
       ```
-  - `validCookieNameRegex` REGEXP
-    - A regular expression generated from RFC 6265 Section 4.1.1 for valid cookie names
+  - `validCookieNameRegex` REGEXP - a regular expression generated from RFC 6265 Section 4.1.1 for valid cookie names
     - Example:
       ```js
       jetta.cookieLib.validCookieNameRegex.test('example') === true
       jetta.cookieLib.validCookieNameRegex.test('') === false
       jetta.cookieLib.validCookieNameRegex.test('ø') === false
       ```
-  - `validCookieValueRegex` REGEXP
-    - A regular expression generated from RFC 6265 Section 4.1.1 for valid cookie values
+  - `validCookieValueRegex` REGEXP - a regular expression generated from RFC 6265 Section 4.1.1 for valid cookie values
     - Example:
       ```js
       jetta.cookieLib.validCookieValueRegex.test('example') === true
@@ -142,8 +133,7 @@
       jetta.cookieLib.validCookieValueRegex.test('a b') === false
       jetta.cookieLib.validCookieValueRegex.test('π') === false
       ```
-  - `validPathValueRegex` REGEXP
-    - A regular expression generated from RFC 6265 Section 4.1.1 for valid cookie paths
+  - `validPathValueRegex` REGEXP - a regular expression generated from RFC 6265 Section 4.1.1 for valid cookie paths
     - Example:
       ```js
       jetta.cookieLib.validPathValueRegex.test('example') === true
@@ -153,9 +143,6 @@
       jetta.cookieLib.validPathValueRegex.test(';') === false
       jetta.cookieLib.validPathValueRegex.test('π') === false
       ```
-  - `trailingSemicolonRegex` REGEXP
-    - A regular expression for trailing semicolons
-
-  All methods may throw an instance of `JettaError` if something is invalid.
+  - `trailingSemicolonRegex` REGEXP - a regular expression for trailing semicolons
 
   For 100% cross-platform compatibility there is no built-in encoder/decoder for cookie names & values (most US-ASCII characters are accepted). You can easily use `decodeURIComponent` and `encodeURIComponent` where necessary and can test via `jetta.cookieLib.validCookieNameRegex`, `jetta.cookieLib.validCookieValueRegex`, and `jetta.cookieLib.validPathValueRegex` (the `jetta.cookieLib.parse*` and `jetta.cookieLib.stringify*` functions use these internally).

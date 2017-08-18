@@ -2,7 +2,7 @@
 
 To ensure a reliability and 100% coverage, we've developed a thorough, modular test suite that's extensible and easy to maintain.
 
-Tests are divided into categories, denoted by their folder (i.e. `cookie-lib`, `cookie-manager`, `request`, etc.). Each are isolated and share no state between each other. This way they can be tested independently via npm's [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) tool (included with npm 5.2.0 or later). Example:
+Tests are divided into categories, denoted by their folder (i.e. `cookie-lib`, `cookie-manager`, `request`, etc.). Each are isolated and share no state between each other - this way they can be tested independently via npm's [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) tool (included with npm 5.2.0 or later). Example:
 ```sh
 $ npx tape test/request/ | npx tap-spec
 ```
@@ -28,12 +28,11 @@ After running some tests you may notice that messages are 'scoped' so that you m
 ### Common Variable Aliases
 
 Throughout the test suite we use the following variable aliases:
-
-`m` = `tools.generateTestMessage`, from `test/tools.js`
-`ev` = `tools.errorVerification`, from `test/tools.js`
-`ps` = `jetta.PublicSuffix` instance
-`cm` = `jetta.CookieManager` instance
-`b` = [bronze](https://github.com/AltusAero/bronze) instance (unique id generator)
+- `m` = `tools.generateTestMessage`, from `test/tools.js`
+- `ev` = `tools.errorVerification`, from `test/tools.js`
+- `ps` = `jetta.PublicSuffix` instance
+- `cm` = `jetta.CookieManager` instance
+- `b` = [bronze](https://github.com/AltusAero/bronze) instance (unique id generator)
 
 
 ### Adding Your Own Custom Engine
@@ -81,8 +80,7 @@ You can run `npm test` to run the full test suite or `node test/request/` only t
 
 ### Test Verbosity
 
-Less verbose output by default - we've ran into log issues on Travis-CI when we've output. To make tests more verbose change:
-
+By default tests are not very verbose - we've ran into log limit issues on Travis-CI because we've exceeded their 4MB limit. To make tests more verbose for local testing change the following in the root of each test (where available):
 ```js
 const t = testTools.lessVerboseOutput(test)
 ```
@@ -91,19 +89,15 @@ to:
 // const t = testTools.lessVerboseOutput(test)
 const t = test
 ```
-In the root of each test where it is available.
 
 
 ### Static Test Files
 
 The `data/test/` contains a few files for testing. Here's what they are:
-  - `shared-config.json`
-    - Shared configuration between tests, such as supported error languages
-  - `.cached-public-suffix.dat`
-    - Cached public suffix list to cut bandwidth and respect the maintainers of the public suffix list
-    - This is ignored by git by default
-  - `tls-cert.pem` and `tls-priv.pem`
-    - Sample keys for testing TLS and `https:`
+  - `shared-config.json` - shared configuration between tests, such as supported error languages
+  - `.cached-public-suffix.dat` - cached public suffix list to cut bandwidth and respect the maintainers of the public suffix list
+    - Ignored git by default
+  - `tls-cert.pem` and `tls-priv.pem` - sample key and cert for testing TLS and the `https:` protocol
     - Test certs can be created via:
       ```sh
       $ openssl req -x509 -days 3650 -nodes -newkey rsa:4096 -keyout tls-priv.pem -out tls-cert.pem
