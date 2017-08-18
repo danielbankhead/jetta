@@ -2,9 +2,10 @@
 
 function validateCookieObject (t = () => {}, parentScope = [], sharedState = {}) {
   const scope = [...parentScope, validateCookieObject.name]
-  const {m, cookieObject} = sharedState
+  const {jetta, m, cookieObject} = sharedState
 
   t.equal(typeof cookieObject, 'object', m(scope, `should be an object`))
+  t.true(cookieObject instanceof jetta.CookieManagerCookie, m(scope, `should be an instance of jetta.CookieManagerCookie`))
   t.notEqual(typeof cookieObject, null, m(scope, `should not be null`))
 
   t.equal(typeof cookieObject.name, 'string', m(scope, `"name" should be an string`))

@@ -42,7 +42,7 @@ tape('url-parser', (test) => {
     t.equal(typeof results.options.ipAddressesAllowed, 'boolean', vm(`.options.ipAddressesAllowed`, `should be a boolean`))
     t.equal(typeof results.options.localhostAllowed, 'boolean', vm(`.options.localhostAllowed`, `should be a boolean`))
     t.equal(typeof results.options.protocolsAllowed, 'object', vm(`.options.protocolsAllowed`, `should be a object`))
-    t.equal(typeof results.options.protocolReplacement, 'string', vm(`.options.protocolReplacement`, `should be a object`))
+    t.equal(typeof results.options.protocolReplacement, 'string', vm(`.options.protocolReplacement`, `should be a string`))
   }
 
   t.equal(typeof jetta.urlParser, 'function', `jetta.urlParser should be a object`)

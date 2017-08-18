@@ -1,9 +1,8 @@
 ## Tests
 
+To ensure a reliability and 100% coverage, we've developed a thorough, modular test suite that's extensible and easy to maintain.
 
-scope, so that you can trace where the test is failing
-
-Each test category (...category) can be tested independently via npm's [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) tool (included with npm 5.2.0 or later). Example:
+Tests are divided into categories, denoted by their folder (i.e. `cookie-lib`, `cookie-manager`, `request`, etc.). Each are isolated and share no state between each other. This way they can be tested independently via npm's [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) tool (included with npm 5.2.0 or later). Example:
 ```sh
 $ npx tape test/request/ | npx tap-spec
 ```
@@ -13,146 +12,99 @@ If a test crash you can debug via `node --trace-warnings`. Example:
 $ node --trace-warnings test/request/
 ```
 
-
-rm -f *.sock && npx tape test/request/ | npx tap-spec
-
-
-
-uniform Array format for scope
-automatically converts Objects to strings
-
-m = tools.generateTestMessage
-ev = tools.errorVerification
-ps = jetta.PublicSuffix instance
-cm = jetta.CookieManager instance
-b = [bronze](https://github.com/AltusAero/bronze) instance (unique id generator)
-
-// [![NSP Status](https://nodesecurity.io/orgs/altus-aero/projects/97b98726-30b7-4837-bf92-77b4621a8bd0/badge)](https://nodesecurity.io/orgs/altus-aero/projects/97b98726-30b7-4837-bf92-77b4621a8bd0)
-
-
-
-tools/.test-request-custom-engines.js
-  (create 'tools' folder at the root of the project if is doesn't exist)
-  ```js
-  const customEngines = [
-    {
-      name: 'custom engine 1',
-      engines: {
-        'http:': http.request,
-        'https:': https.request
-      },
-      start: async () => {
-        // await something()...
-      },
-      shutdown: async () => {
-        // await somethingForShutdown()...
-      }
-    },
-    {
-      name: 'custom engine 2',
-      engines: {
-        'data:': () => {},
-        'file:': () => {},
-        'fancy-new-protocol:': () => {}
-      },
-      start: async () => {},
-      shutdown: async () => {}
-    }
-  ]
-
-  module.exports = customEngines
-  ```
-
-
-
-
-
-
-Less verbose output by default
-  change:
-
-  ```js
-  const t = testTools.lessVerboseOutput(test)
-  ```
-
-  to:
-
-  ```js
-  // const t = testTools.lessVerboseOutput(test)
-  const t = test
-  ```
-
-
-
-
-
-
-
-
-
-
-data/test/
-  - shared-config
-    - update langs
-  - cached-public-suffix.dat
-    - for tests (to cut bandwidth and respect the maintainers of the public-suffix database)
-
-
-  Test certs can be created via:
-
-  ```sh
-  $ openssl req -x509 -days 3650 -nodes -newkey rsa:4096 -keyout tls-priv.pem -out tls-cert.pem
-  ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Perhaps move to data/test/... ?
-  RELATED: test/README.md
-
-
-// "Content-Encoding: gzip"
-// "Content-Encoding: gzip, gzip, gzip"
-// "Content-Encoding: gzip, deflate, gzip"
-
-dd if=/dev/zero bs=102400 count=1  | gzip > 100KiB-of-0s.gzip
-dd if=/dev/zero bs=1048576 count=1024  | gzip | gzip | gzip > 1GiB-of-0s.gzip.gzip.gzip
-
-```js
-const MiB = Buffer.alloc(1 * 1024 * 1024)
-const compressed = zlib.gzipSync(zlib.deflateSync(zlib.gzipSync(MiB)))
-fs.writeFileSync('1MiB-of-0s.gzip.zlib.gzip', compressed)
+To run the complete test suite simply use:
+```sh
+$ npm test
 ```
 
-TODO: deflate, gzip example
+Some tests, such as `request`, will temporarily create files, folders, and sockets in the current directory. These do no harm, but if a test crash they may make a mess. You can use something like the following example to quickly clean things up:
+```sh
+$ rm -f *.sock && npx tape test/request/ | npx tap-spec
+```
+
+After running some tests you may notice that messages are 'scoped' so that you may trace exactly where something has occurred.
 
 
+### Common Variable Aliases
+
+Throughout the test suite we use the following variable aliases:
+
+`m` = `tools.generateTestMessage`, from `test/tools.js`
+`ev` = `tools.errorVerification`, from `test/tools.js`
+`ps` = `jetta.PublicSuffix` instance
+`cm` = `jetta.CookieManager` instance
+`b` = [bronze](https://github.com/AltusAero/bronze) instance (unique id generator)
 
 
+### Adding Your Own Custom Engine
+
+Testing compatibility with your custom engines with jetta is rather straight-forward. Simply create a new module in `tools/.test-request-custom-engines.js` (create the 'tools' directory at the root of the project if is doesn't exist - no worries, this file is ignored by git by default).
+
+The module should export an array of objects. Each object should have a 'name' as a string, the 'engines' object, a 'start' function that returns a Promise, and a 'shutdown' function that returns a Promise.
+
+- The module is an array of objects so that you may test multiple engines and combinations at once.
+- An object's 'name' attribute is so that you can identify the
+
+Example:
+```js
+const customEngines = [
+  {
+    name: 'custom engine 1',
+    engines: {
+      'http:': http.request,
+      'https:': https.request
+    },
+    start: async () => {
+      // await something()...
+    },
+    shutdown: async () => {
+      // await somethingForShutdown()...
+    }
+  },
+  {
+    name: 'custom engine 2',
+    engines: {
+      'data:': () => {},
+      'file:': () => {},
+      'fancy-new-protocol:': () => {}
+    },
+    start: async () => {},
+    shutdown: async () => {}
+  }
+]
+
+module.exports = customEngines
+```
+
+You can run `npm test` to run the full test suite or `node test/request/` only test the request features. Starting off you may save time by testing the `node test/request/` for issues first.
 
 
+### Test Verbosity
+
+Less verbose output by default - we've ran into log issues on Travis-CI when we've output. To make tests more verbose change:
+
+```js
+const t = testTools.lessVerboseOutput(test)
+```
+to:
+```js
+// const t = testTools.lessVerboseOutput(test)
+const t = test
+```
+In the root of each test where it is available.
+
+
+### Static Test Files
+
+The `data/test/` contains a few files for testing. Here's what they are:
+  - `shared-config.json`
+    - Shared configuration between tests, such as supported error languages
+  - `.cached-public-suffix.dat`
+    - Cached public suffix list to cut bandwidth and respect the maintainers of the public suffix list
+    - This is ignored by git by default
+  - `tls-cert.pem` and `tls-priv.pem`
+    - Sample keys for testing TLS and `https:`
+    - Test certs can be created via:
+      ```sh
+      $ openssl req -x509 -days 3650 -nodes -newkey rsa:4096 -keyout tls-priv.pem -out tls-cert.pem
+      ```

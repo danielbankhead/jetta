@@ -4,7 +4,7 @@ const validateCookieObject = require('./validate-cookie-object')
 
 async function addCookieTests (t = () => {}, parentScope = [], sharedState = {}) {
   const scope = [...parentScope, addCookieTests.name]
-  const {config, errorCategory, m, ev, cm, b} = sharedState
+  const {jetta, config, errorCategory, m, ev, cm, b} = sharedState
   const uniqueCookieId = `${b.generate()}.com`
   const uniqueCookieExpireId = `${b.generate()}.com`
   const cachedMaxCookiesPerDomain = cm.maxCookiesPerDomain
@@ -138,6 +138,7 @@ async function addCookieTests (t = () => {}, parentScope = [], sharedState = {})
       if (cookieObject.name === uniqueCookieId) {
         t.pass(m(scope, `should fire an 'addedCookie' event when a new cookie has been added`))
         t.equal(typeof cm.cookies[cookieObject.domain][cookieObject.path][cookieObject.name], 'object', m(scope, `should create a nested cookie object path to cookie object once added`))
+        t.true(cookieObject instanceof jetta.CookieManagerCookie, m(scope, `should be an instance of jetta.CookieManagerCookie`))
 
         cm.removeListener('addedCookie', addedCookieHandler)
 
@@ -155,6 +156,7 @@ async function addCookieTests (t = () => {}, parentScope = [], sharedState = {})
       if (cookieObject.name === uniqueCookieId) {
         t.pass(m(scope, `should fire an 'updatedCookie' event when a cookie has been updated`))
         t.equal(typeof cm.cookies[cookieObject.domain][cookieObject.path][cookieObject.name], 'object', m(scope, `should have a nested cookie object path to updated cookie object`))
+        t.true(cookieObject instanceof jetta.CookieManagerCookie, m(scope, `should be an instance of jetta.CookieManagerCookie`))
 
         cm.removeListener('updatedCookie', updatedCookieHandler)
 
@@ -172,6 +174,7 @@ async function addCookieTests (t = () => {}, parentScope = [], sharedState = {})
       if (cookieObject.name === uniqueCookieId) {
         t.pass(m(scope, `"deletedCookie" event\` should fire a 'deletedCookie' event when a new cookie has been deleted`))
         t.equal(cm.cookies[cookieObject.domain], undefined, m(scope, `should delete a nested cookie object path if no more cookies are in the cookie object path`))
+        t.true(cookieObject instanceof jetta.CookieManagerCookie, m(scope, `should be an instance of jetta.CookieManagerCookie`))
 
         cm.removeListener('deletedCookie', deleteCookieHandler)
 

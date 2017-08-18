@@ -34,6 +34,8 @@ tape('request', {timeout: 5 * 60 * 1000}, (test) => {
     t.equal(typeof jetta.request, 'function', `jetta.request should be a function`)
     t.equal(typeof jetta.requestPromise, 'function', `jetta.requestPromise should be a function`)
     t.equal(typeof jetta.request.constants, 'object', `jetta.request.constants should be an object`)
+    t.equal(typeof jetta.requestPromise.constants, 'object', `jetta.requestPromise.constants should be an object`)
+    t.equal(jetta.request.constants, jetta.requestPromise.constants, `jetta.request.constants and jetta.requestPromise.constants should point to the same object`)
 
     t.equal(typeof jetta.request.constants.redirectsPreserveHeader, 'object', `jetta.request.constants.redirectsPreserveHeader should be an object`)
     t.equal(jetta.request.constants.redirectsPreserveHeader.ALWAYS, 1, `jetta.request.constants.redirectsPreserveHeader.ALWAYS should be 1`)

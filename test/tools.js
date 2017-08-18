@@ -29,6 +29,11 @@ function errorVerification (state = {t: () => {}, scope: [], e: new jetta.JettaE
     l.true(e.message.toLowerCase().includes('cookie'), em(`error message should contain the word 'cookie' to help with context.`))
   }
 
+  if (errorCategory === 'jetta-make-directory') {
+    l.true(/^jetta-make-directory/.test(e.code), em(`error code starts with 'jetta-make-directory'`))
+    l.true(e.message.toLowerCase().includes('directory'), em(`error message should contain the word 'directory' to help with context.`))
+  }
+
   if (errorCategory === 'public-suffix') {
     l.true(/^jetta-public-suffix/.test(e.code), em(`error code starts with 'jetta-public-suffix'`))
     l.true(e.message.toLowerCase().includes('publicsuffix') || e.message.toLowerCase().includes('public suffix'), em(`error message should contain the words 'publicsuffix' or 'public suffix' to help with context.`))
@@ -44,7 +49,7 @@ function errorVerification (state = {t: () => {}, scope: [], e: new jetta.JettaE
 
   l.true(e instanceof jetta.JettaError, em(`error should be an instance of JettaError`))
   l.true(e instanceof Error, em(`error should be an instance of Error`))
-  l.true(typeof e.details === 'object' || typeof e.details === 'string', em(`error.details should be an object or string`))
+  l.equal(typeof e.details, 'object', em(`error.details should be an object`))
   l.notEqual(e.details, null, em(`error.details should not be \`null\``))
   l.equal(typeof e.lang, 'string', em(`error.lang should be a string`))
   l.equal(e.lang, preferredErrorLanguage, em(`error.lang should be '${preferredErrorLanguage}'`))

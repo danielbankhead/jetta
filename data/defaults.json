@@ -3,7 +3,6 @@
     "allowExpiredSetCookie": true,
     "fromHttpApi": true,
     "isSecureEnv": true,
-    "isTopLevelBrowsingContext": true,
     "preferredErrorLanguage": "en",
     "publicSuffix": null,
     "requestMethod": "GET",

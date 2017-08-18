@@ -2,7 +2,7 @@
 
 async function deleteCookieTests (t = () => {}, parentScope = [], sharedState = {}) {
   const scope = [...parentScope, deleteCookieTests.name]
-  const {m, cm, b} = sharedState
+  const {jetta, m, cm, b} = sharedState
   const uniqueCookieId = `${b.generate()}.com`
   const uniqueCookieId2 = `${b.generate()}.com`
 
@@ -45,6 +45,7 @@ async function deleteCookieTests (t = () => {}, parentScope = [], sharedState = 
       if (cookieObject.name === uniqueCookieId) {
         t.pass(m(scope, `"deletedCookie" event\` should fire a 'deletedCookie' event when a new cookie has been deleted`))
         t.equal(cm.cookies[cookieObject.domain], undefined, m(scope, `should delete a nested cookie object path if no more cookies are in the cookie object path`))
+        t.true(cookieObject instanceof jetta.CookieManagerCookie, m(scope, `should be an instance of jetta.CookieManagerCookie`))
 
         cm.removeListener('deletedCookie', deleteCookieHandler)
 

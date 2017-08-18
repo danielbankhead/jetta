@@ -1,4 +1,11 @@
 ## Future
+  - HTTP/2 support
+    - [nodejs/http2](https://github.com/nodejs/http2)
+
+  - Investigate Windows + HTTPS + Request Stream issue
+    - See [`expectHTTPSStreamErrorOnWindows`](https://github.com/AltusAero/jetta/blob/55a202594a148bb815e19d715723bbfb50dd1dfa/test/request/http-protocols/index.js#L16) and where it is used.
+    - See error in AppVeyor [build #24](https://ci.appveyor.com/project/DanielBankhead/jetta/build/24-staging/job/v1hmrj792f0sovu5#L364)
+
   - examples/
     - add a few examples
       - with videos and gifs
@@ -20,8 +27,12 @@
     - See:
       - [lib/jetta-error.js](lib/jetta-error.js)
 
-  - HTTP/2 support
-    - [nodejs/http2](https://github.com/nodejs/http2)
+  - Use `process.env.LANG` as the fallback `preferredErrorLanguage`
+    - Perhaps:
+      ```js
+      const preferredErrorLanguage = process.env.LANG.split('.')[0].split('_')[0]
+      ```
+      - Consider Chinese, where language locale matters
 
   - Proxy support
     - Consider this from Electron: https://github.com/electron/electron/pull/7577

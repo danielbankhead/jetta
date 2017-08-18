@@ -188,6 +188,7 @@ const local = {
       [{name: 'n', value: 'v', expires: new Date(0)}, 'n=v; Expires=Thu, 01 Jan 1970 00:00:00 GMT'],
       [{name: 'n', value: 'v', expires: new Date(1498591378533)}, 'n=v; Expires=Tue, 27 Jun 2017 19:22:58 GMT'],
       [{name: 'n', value: 'v', Expires: 1498591378533}, 'n=v; Expires=Tue, 27 Jun 2017 19:22:58 GMT'],
+      [{name: 'n', value: 'v', Expires: 'Tue, 27 Jun 2017 19:22:58 GMT'}, 'n=v; Expires=Tue, 27 Jun 2017 19:22:58 GMT'],
       [
         {
           name: 'n',

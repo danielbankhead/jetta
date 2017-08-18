@@ -6,8 +6,11 @@ const path = require('path')
 
 const tape = require('tape')
 
+const config = require('./.config')
 const jetta = require('../../')
 const testTools = require('../tools')
+
+const errorCategory = 'make-nested-directory'
 
 tape('make-nested-directory', (t) => {
   const testMakeNestedDirectories = ['t-d1', 't-d2', 't-d3', 't-d4']
@@ -47,7 +50,17 @@ tape('make-nested-directory', (t) => {
 
   fs.writeFileSync(testMakeNestedDirectories[0], '')
 
-  t.throws(() => { jetta.makeNestedDirectory(testMakeNestedDirectoriesJoined) }, `makeNestedDirectory('${testMakeNestedDirectoriesJoined}') should throw if nested directories cannot be created`)
+  for (let i = 0, len = config.currentAvailableLangs.length; i < len; i++) {
+    const preferredErrorLanguage = config.currentAvailableLangs[i]
+    const nestedScope = [`error check`, preferredErrorLanguage]
+
+    try {
+      jetta.makeNestedDirectory(testMakeNestedDirectoriesJoined, {preferredErrorLanguage})
+      t.fail(testTools.generateTestMessage(nestedScope, 'should have thrown'))
+    } catch (e) {
+      testTools.errorVerification({t, scope: nestedScope, e, errorCategory, preferredErrorLanguage})
+    }
+  }
 
   testTools.cleanupFiles(testMakeNestedDirectories[0])
 

@@ -30,6 +30,8 @@ tape('cookie-manager', {timeout: 60 * 1000}, (test) => {
 
   async function asyncTests () {
     t.equal(typeof jetta.CookieManager, 'function', `jetta.CookieManager should be a function (class)`)
+    t.equal(typeof jetta.CookieManagerCookie, 'function', `jetta.CookieManagerCookie should be a function (class)`)
+    t.doesNotThrow(() => new jetta.CookieManagerCookie(), `new jetta.CookieManagerCookie should not throw when no params have been passed`)
 
     await testTools.prepareCachedDefaultPublicSuffixList(shared.defaults)
     testTools.cleanupFiles(defaults.publicSuffix.path)

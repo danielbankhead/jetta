@@ -13,7 +13,8 @@ const urlParser = require('./lib/url-parser')
 
 module.exports = {
   cookieLib,
-  CookieManager,
+  CookieManager: CookieManager.CookieManager,
+  CookieManagerCookie: CookieManager.CookieManagerCookie,
   defaults,
   domainLib,
   JettaError,

@@ -30,7 +30,7 @@ function uniformResultsValidator (t = () => {}, parentScope = [], sharedState = 
   t.equal(typeof results.options.urlParser, 'object', m(scope, `results.options.urlParser should be an object`))
   t.notEqual(results.options.urlParser, null, m(scope, `results.options.urlParser should not be \`null\``))
 
-  t.true(Array.isArray(results.redirects), m(scope, `results.redirects should be an object`))
+  t.true(Array.isArray(results.redirects), m(scope, `results.redirects should be an Array`))
 
   for (let i = 0, len = results.redirects; i < len; i++) {
     uniformResultsValidator(t, [...scope, 'result from results.redirect'], Object.assign({}, sharedState, {results: results.redirects[i]}))
