@@ -85,5 +85,5 @@
     "test": "npm run nsp && npm run lint && nyc --check-coverage npm run tape"
   },
   "standard": {},
-  "version": "0.0.7"
+  "version": "1.0.0"
 }
