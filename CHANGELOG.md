@@ -1,3 +1,7 @@
+## [1.1.0](https://github.com/AltusAero/jetta/releases/tag/v1.1.0)
+
+Support [Electron 1.7.x](https://github.com/electron/electron/releases/tag/v1.7.0) by adding support for Node.js 7.9.0.
+
 ## [1.0.0](https://github.com/AltusAero/jetta/releases/tag/v1.0.0)
 
 A complete rewrite with tons of new features

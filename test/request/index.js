@@ -29,6 +29,10 @@ tape('request', {timeout: 5 * 60 * 1000}, (t) => {
   })
 
   async function asyncTests () {
+    const originalNodeTLSRejectUnauthorizedValue = process.env.NODE_TLS_REJECT_UNAUTHORIZED
+
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+
     t.equal(typeof jetta.request, 'function', `jetta.request should be a function`)
     t.equal(typeof jetta.requestPromise, 'function', `jetta.requestPromise should be a function`)
     t.equal(typeof jetta.request.constants, 'object', `jetta.request.constants should be an object`)
@@ -77,6 +81,12 @@ tape('request', {timeout: 5 * 60 * 1000}, (t) => {
     await serversShutdown(shared)
 
     testTools.cleanupFiles(defaults.publicSuffix.path)
+
+    if (typeof originalNodeTLSRejectUnauthorizedValue === 'string') {
+      process.env.NODE_TLS_REJECT_UNAUTHORIZED = originalNodeTLSRejectUnauthorizedValue
+    } else {
+      delete process.env.NODE_TLS_REJECT_UNAUTHORIZED
+    }
 
     t.end()
   }

@@ -5,4 +5,5 @@ os:
 node_js:
   - "node"
   - "8"
+  - "7.9.0" # For Electron 1.7.x
 after_success: npm run coverage
