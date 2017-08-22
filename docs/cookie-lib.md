@@ -52,7 +52,7 @@
     - Example:
       ```js
       jetta.cookieLib.parseCookieKV('user=bob; color=blue')
-      // -> { user: 'bob', color: 'blue' }
+      // returns: { user: 'bob', color: 'blue' }
       ```
 
     - _return_ OBJECT
@@ -83,7 +83,7 @@
     - Example:
       ```js
       jetta.cookieLib.stringifyCookie([{name: 'cat', value: 'Internet'}, {name: 'js', value: '"JavaScript"'}])
-      // -> 'cat=Internet; js=JavaScript'
+      // returns: 'cat=Internet; js=JavaScript'
       ```
 
      - _return_ STRING
@@ -92,7 +92,7 @@
     - Example:
       ```js
       jetta.cookieLib.stringifyCookieKV({cat: 'Internet', js: '"JavaScript"'})
-      // -> 'cat=Internet; js=JavaScript'
+      // returns: 'cat=Internet; js=JavaScript'
       ```
 
     - _return_ STRING
@@ -107,7 +107,7 @@
     - Example:
       ```js
       jetta.cookieLib.stringifySetCookie({name: 'example', value: 'cookie', Expires: new Date(1498591378533)})
-      // -> 'example=cookie; Expires=Tue, 27 Jun 2017 19:22:58 GMT'
+      // returns: 'example=cookie; Expires=Tue, 27 Jun 2017 19:22:58 GMT'
       ```
 
     - _return_ STRING

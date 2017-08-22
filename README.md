@@ -31,13 +31,10 @@ const jetta = require('jetta')
 
 jetta.request('altusaero.com', (error, results) => {
   if (error !== null) {
-    throw error // contains an extended details along with multi-language support
+    throw error // contains extended details along with multi-language support
   } else {
-    // Results contain useful information
-      // - including response time, response headers, normalized options used, and more
-    console.dir(results, {colors: true})
-    console.log(results.data.toString())
-    // <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">...
+    console.dir(results, {colors: true}) // response time, headers, normalized options used, and more
+    console.log(results.data.toString()) // <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">...
   }
 })
 ```
@@ -51,9 +48,9 @@ async function myRequest (url = 'altusaero.com', options = {}) {
 const cookieManager = new jetta.CookieManager()
 const publicSuffix = new jetta.PublicSuffix()
 
-jetta.urlParser('foo-bar').isValid === false
-jetta.urlParser('127.0.0.12').isLocalhost === true
-jetta.urlParser('example.com', {addMissingProtocol: true}).parsedURL.href === 'https://example.com/'
+jetta.urlParser('foo-bar').isValid // false
+jetta.urlParser('127.0.0.12').isLocalhost // true
+jetta.urlParser('example.com', {addMissingProtocol: true}).parsedURL.href // 'https://example.com/'
 ```
 
 
@@ -151,14 +148,10 @@ jetta.request(imageURL, options, (error, results) => {
   - A utility for comparing and analyzing domains
   - Example:
   ```js
-  jetta.domainLib.domainInOtherDomain('example.com', 'com')
-  // true
-  jetta.domainLib.domainInOtherDomain('example.com', 'example.com')
-  // true
-  jetta.domainLib.domainInOtherDomain('super.sub.example.com', 'example.com')
-  // true
-  jetta.domainLib.domainInOtherDomain('not-example.com', 'example.com')
-  // false
+  jetta.domainLib.domainInOtherDomain('example.com', 'com') // true
+  jetta.domainLib.domainInOtherDomain('example.com', 'example.com') // true
+  jetta.domainLib.domainInOtherDomain('super.sub.example.com', 'example.com') // true
+  jetta.domainLib.domainInOtherDomain('not-example.com', 'example.com') // false
   ```
 
   - jetta.domainLib.domainInOtherDomain(`child` STRING, `parent` STRING)
@@ -191,23 +184,18 @@ jetta.request(imageURL, options, (error, results) => {
   const error = new jetta.JettaError('jetta-cookie-invalid-name', 'en')
   ```
 
-  - new jetta.JettaError(`code` STRING, `preferredErrorLanguage` STRING[, `details` OBJECT])
-    - `code` STRING
-      - A valid error code as used in jetta
+  - _new_ jetta.JettaError(`code` STRING, `preferredErrorLanguage` STRING[, `details` OBJECT])
+    - `code` STRING - a valid error code as used in jetta
     - `preferredErrorLanguage` STRING - as an [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
-    - `details` OBJECT
-      - Any details associated with the error
+    - `details` OBJECT - any details associated with the error
 
     - _instance_ OBJECT
-      - `code` STRING
-        - the unique error code for this particular JettaError
+      - `code` STRING - the unique error code for this particular JettaError
       - `details` OBJECT - provides additional details to an error
-        - A few examples:
-          - native JavaScript/Node.js Error
-          - general key-value Object (e.g. `details.algorithm` to denote which algorithm is wrong)
+        - A native `Error` or key-value object (e.g. `details.algorithm` to denote which algorithm is wrong)
         - This is always an object - never `null`
       - `lang` STRING - as an [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
-        - The language used for the error message, in case the requested language is not available
+        - The language used for the error message, may be `en` if `preferredErrorLanguage` was not available
       - `message` STRING - The localized message in the language denoted by _instance_.`lang`
 
 ### jetta.PublicSuffix `CLASS` extends `EventEmitter`
@@ -232,8 +220,7 @@ jetta.request(imageURL, options, (error, results) => {
   - Example:
   ```js
   jetta.request('altusaero.com', (error, results) => {
-    // results contain the error as 'results.error'
-      // the 'error' param is for convenience and compatibility
+    // for convenience purposes, 'results.error' is the same as the 'error' param
     console.dir(results, {colors: true})
   })
   ```
@@ -261,12 +248,9 @@ jetta.request(imageURL, options, (error, results) => {
   ```js
   const urlResults = jetta.urlParser('example.com/about/', {addMissingProtocol: true})
 
-  urlResults.isLocalhost
-  // false
-  urlResults.isValid
-  // true
-  urlResults.parsedURL.protocol
-  // 'https:'
+  urlResults.isLocalhost // false
+  urlResults.isValid // true
+  urlResults.parsedURL.protocol // 'https:'
   ```
 
   - Complete documentation can be found in [docs/url-parser.md](docs/url-parser.md).

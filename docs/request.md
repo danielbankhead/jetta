@@ -10,8 +10,7 @@
   - Example:
   ```js
   jetta.request('altusaero.com', (error, results) => {
-    // results contain the error as 'results.error'
-      // the 'error' param is for convenience and compatibility
+    // for convenience purposes, 'results.error' is the same as the 'error' param
     console.dir(results, {colors: true})
   })
   ```

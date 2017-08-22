@@ -6,7 +6,7 @@
   const ps = new jetta.PublicSuffix()
   ```
 
-  - new jetta.PublicSuffix([`options` OBJECT])
+  - _new_ jetta.PublicSuffix([`options` OBJECT])
     - All options are optional (defaults can be found in `jetta.defaults.publicSuffix`)
     - Prepares an immediate update upon creation under the following cases:
       - if `options.list` is used, but is an empty string
@@ -54,20 +54,11 @@
       - `isPublicSuffix` (`hostname` STRING) - checks if `hostname` is a public suffix
         - Example:
           ```js
-          ps.isPublicSuffix('com')
-          // > true
-
-          ps.isPublicSuffix('uk.com')
-          // > true
-
-          ps.isPublicSuffix('example.kawasaki.jp')
-          // > true
-
-          ps.isPublicSuffix('city.kawasaki.jp')
-          // > false
-
-          ps.isPublicSuffix('altusaero.com')
-          // > false
+          ps.isPublicSuffix('com') // true
+          ps.isPublicSuffix('uk.com') // true
+          ps.isPublicSuffix('example.kawasaki.jp') // true
+          ps.isPublicSuffix('city.kawasaki.jp') // false
+          ps.isPublicSuffix('altusaero.com') // false
           ```
 
         - _return_ BOOLEAN

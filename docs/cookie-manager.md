@@ -9,7 +9,7 @@
   const cm = new jetta.CookieManager()
   ```
 
-  - new jetta.CookieManager([`options` OBJECT])
+  - _new_ jetta.CookieManager([`options` OBJECT])
     - All options are optional (defaults can be found in `jetta.defaults.cookieManager`)
 
     - `options` OBJECT _optional_
@@ -105,7 +105,7 @@
   const cookieForStorage = new jetta.CookieManagerCookie()
   ```
 
-  - new jetta.CookieManagerCookie([`attributes` OBJECT])
+  - _new_ jetta.CookieManagerCookie([`attributes` OBJECT])
     - `attributes` OBJECT - the cookie's attributes
 
     - _instance_ OBJECT

@@ -5,12 +5,9 @@
   ```js
   const urlResults = jetta.urlParser('example.com/about/', {addMissingProtocol: true})
 
-  urlResults.isLocalhost
-  // false
-  urlResults.isValid
-  // true
-  urlResults.parsedURL.protocol
-  // 'https:'
+  urlResults.isLocalhost // false
+  urlResults.isValid // true
+  urlResults.parsedURL.protocol // 'https:'
   ```
 
   - jetta.urlParser(`candidate` STRING | OBJECT[, `options` OBJECT])
@@ -28,7 +25,7 @@
         - Example:
           ```js
           jetta.urlParser('example.com', {addMissingProtocol: true}).url
-          // > 'https://example.com'
+          // returns: 'https://example.com'
           ```
 
       - `allowWhitespaceBeforeFormatting` BOOLEAN
@@ -37,7 +34,7 @@
         - Example:
           ```js
           jetta.urlParser('https://example.com/here there', {allowWhitespaceBeforeFormatting: false}).isValid
-          // > false
+          // returns: false
           ```
 
       - `ipAddressesAllowed` BOOLEAN
@@ -56,11 +53,8 @@
           const protocolsAllowed = {
             'https:': true,
           }
-          jetta.urlParser('https://example.com/', {protocolsAllowed}).isValid
-          // > true
-
-          jetta.urlParser('http://example.com/', {protocolsAllowed}).isValid
-          // > false
+          jetta.urlParser('https://example.com/', {protocolsAllowed}).isValid // true
+          jetta.urlParser('http://example.com/', {protocolsAllowed}).isValid // false
           ```
 
       - `protocolReplacement` STRING
@@ -72,14 +66,9 @@
         - Determines if localhost URLs are considered valid
         - Example:
           ```js
-          jetta.urlParser('http://127.0.0.1', {localhostAllowed: true}).isValid
-          // > true
-
-          jetta.urlParser('http://localhost', {localhostAllowed: false}).isValid
-          // > false
-
-          jetta.urlParser('::1', {localhostAllowed: true}).isValid
-          // > true
+          jetta.urlParser('http://127.0.0.1', {localhostAllowed: true}).isValid // true
+          jetta.urlParser('http://localhost', {localhostAllowed: false}).isValid // false
+          jetta.urlParser('::1', {localhostAllowed: true}).isValid // true
           ```
 
     - _return_ `results` OBJECT
