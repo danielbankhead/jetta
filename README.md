@@ -184,19 +184,7 @@ jetta.request(imageURL, options, (error, results) => {
   const error = new jetta.JettaError('jetta-cookie-invalid-name', 'en')
   ```
 
-  - _new_ jetta.JettaError(`code` STRING, `preferredErrorLanguage` STRING[, `details` OBJECT])
-    - `code` STRING - a valid error code as used in jetta
-    - `preferredErrorLanguage` STRING - as an [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
-    - `details` OBJECT - any details associated with the error
-
-    - _instance_ OBJECT
-      - `code` STRING - the unique error code for this particular JettaError
-      - `details` OBJECT - provides additional details to an error
-        - A native `Error` or key-value object (e.g. `details.algorithm` to denote which algorithm is wrong)
-        - This is always an object - never `null`
-      - `lang` STRING - as an [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
-        - The language used for the error message, may be `en` if `preferredErrorLanguage` was not available
-      - `message` STRING - The localized message in the language denoted by _instance_.`lang`
+  - Complete documentation can be found in [docs/jetta-error.md](docs/jetta-error.md).
 
 ### jetta.PublicSuffix `CLASS` extends `EventEmitter`
   - A [public suffix list](https://en.wikipedia.org/wiki/Public_Suffix_List) useful for looking up TLDs and eTLDs
