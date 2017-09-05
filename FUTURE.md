@@ -5,6 +5,8 @@
     - See [`expectHTTPSStreamErrorOnWindows` in test](https://github.com/AltusAero/jetta/blob/55a202594a148bb815e19d715723bbfb50dd1dfa/test/request/http-protocols/index.js#L16) and where it is used.
     - See error in AppVeyor [build #24 - L364](https://ci.appveyor.com/project/DanielBankhead/jetta/build/24-staging/job/v1hmrj792f0sovu5#L364)
 
+  - Add logo
+
   - Useful `examples/`
     - With videos and gifs
     - Progress logging examples:
