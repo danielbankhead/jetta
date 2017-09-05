@@ -1,12 +1,22 @@
+## [1.1.2](https://github.com/AltusAero/jetta/releases/tag/v1.1.2)
+
+- Documentation cleanup
+  - All [library](lib/) files now have a corresponding file in [docs/](docs/).
+- Added missing changelog entry.
+
+## [1.1.1](https://github.com/AltusAero/jetta/releases/tag/v1.1.1)
+
+- Documentation cleanup and dev dependency updates
+
 ## [1.1.0](https://github.com/AltusAero/jetta/releases/tag/v1.1.0)
 
-Support [Electron 1.7.x](https://github.com/electron/electron/releases/tag/v1.7.0) by adding support for Node.js 7.9.0.
+- Support [Electron 1.7.x](https://github.com/electron/electron/releases/tag/v1.7.0) by adding support for Node.js 7.9.0.
 
 ## [1.0.0](https://github.com/AltusAero/jetta/releases/tag/v1.0.0)
 
-A complete rewrite with tons of new features
+- A complete rewrite with tons of new features
 
-**Breaking Changes**
+- **Breaking Changes**
   - Limited use cases are backwards compatible with v0.0.x
 
 ## [0.0.7](https://github.com/AltusAero/jetta/releases/tag/v0.0.7)
