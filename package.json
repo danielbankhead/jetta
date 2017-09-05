@@ -12,11 +12,11 @@
   "devDependencies": {
     "bronze": "^1.4.0",
     "coveralls": "^2.11.15",
-    "nsp": "^2.6.2",
-    "nyc": "^11.1.0",
+    "nsp": "^2.8.0",
+    "nyc": "^11.2.0",
     "pre-commit": "^1.2.2",
     "standard": "^10.0.3",
-    "tap-summary": "^3.0.2",
+    "tap-summary": "^4.0.0",
     "tape": "^4.8.0"
   },
   "engines": {
