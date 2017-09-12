@@ -14,7 +14,7 @@
       - By bytes
       - Time - estimated & total
 
-  - Use `makeNestedDirectory` for request's `toFile` feature
+  - Use `makeNestedDirectory` for request's `toFile` option
     - Update `test/request/shared-options`
     - Consider file URLs, which contain encoded paths
 
@@ -49,7 +49,8 @@
     - `strict` BOOLEAN
       - If `data > range` (`content-length` or actual) or if status is not `206`, then cancel w/ error
       - _default_: `true`
-  - See for examples and ideas:
-    - http://stackoverflow.com/questions/8696523/nodejs-http-range-support-partial-file-download
-    - http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html
-    - https://gist.github.com/padenot/1324734
+
+    - See for examples and ideas:
+      - http://stackoverflow.com/questions/8696523/nodejs-http-range-support-partial-file-download
+      - http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html
+      - https://gist.github.com/padenot/1324734
