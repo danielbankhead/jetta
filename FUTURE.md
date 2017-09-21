@@ -5,7 +5,7 @@
     - See [`expectHTTPSStreamErrorOnWindows` in test](https://github.com/AltusAero/jetta/blob/55a202594a148bb815e19d715723bbfb50dd1dfa/test/request/http-protocols/index.js#L16) and where it is used.
     - See error in AppVeyor [build #24 - L364](https://ci.appveyor.com/project/DanielBankhead/jetta/build/24-staging/job/v1hmrj792f0sovu5#L364)
 
-  - Add logo
+  - Introductory video or gif, with real-world examples, on main README.md
 
   - Useful `examples/`
     - With videos and gifs
@@ -17,8 +17,6 @@
   - Use `makeNestedDirectory` for request's `toFile` option
     - Update `test/request/shared-options`
     - Consider file URLs, which contain encoded paths
-
-  - Introductory video or gif, with real-world examples, on main README.md
 
   - Error messages in more languages
     - Use [ISO 639-1 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)

@@ -1,3 +1,7 @@
+## NEXT
+
+- Added logo
+
 ## [1.1.2](https://github.com/AltusAero/jetta/releases/tag/v1.1.2)
 
 - Documentation cleanup

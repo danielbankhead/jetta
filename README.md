@@ -25,6 +25,7 @@
 [github-graphs-contributors]: https://github.com/AltusAero/jetta/graphs/contributors
 [standardjs]: http://standardjs.com/
 
+![Jetta logo](https://altusaero.net/opensource/jetta/logo/1.1/jetta.png)
 
 ```js
 const jetta = require('jetta')
@@ -93,8 +94,8 @@ $ npm install jetta
 ```js
 const jetta = require('jetta')
 
-const imageURL = 'https://altusaero.net/images/site/1920x1080/pexels-photo+(15).jpg'
-const options = {toFile: 'pexels-photo+(15).jpg'}
+const imageURL = 'https://altusaero.net/opensource/jetta/logo/1.1/jetta.svg'
+const options = {toFile: 'jetta.svg'}
 
 jetta.request(imageURL, options, (error, results) => {
   if (error !== null) {
