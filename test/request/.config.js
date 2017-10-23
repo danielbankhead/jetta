@@ -95,7 +95,7 @@ const local = {
     ],
     bodyExample: Buffer.from('example'),
     contentEncodingAllocation: 1024,
-    externalRedirectURL: 'en.altusaero.com', // github.com/AltusAero/jetta
+    externalRedirectURL: 'github.com/AltusAero/jetta',
     formExample: {
       name: 'Dan',
       email: 'dan@example.com'
