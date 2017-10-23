@@ -1,7 +1,7 @@
 # Jetta
 ## A powerful, multi-protocol request library and toolkit ✈️
 
-[![Jetta by Altus Aero][shield-io-altusaero]][altusaero-github] [![npm version][shield-io-npm-version]][npm] [![npm total downloads][shield-io-npm-total-downloads]][npm] [![npm license][shield-io-npm-license]][npm] [![AppVeyor][shield-io-AppVeyor]][appveyor] [![Travis CI][shield-io-Travis-CI]][travis] [![Travis CI][shield-io-Coveralls]][coveralls] [![GitHub - Issues Open][shield-io-GitHub-Issues-Open]][github-issues] [![GitHub - Pull Requests Open][shield-io-GitHub-Pull-Requests-Open]][github-pulls] [![GitHub - Contributors][shield-io-GitHub-Contributors]][github-graphs-contributors] [![Standard - JavaScript Style Guide][shield-io-standard-style]][standardjs]
+[![Jetta by Altus Aero][shield-io-altusaero]][altusaero-github] [![npm version][shield-io-npm-version]][npm] [![npm total downloads][shield-io-npm-total-downloads]][npm] [![npm license][shield-io-npm-license]][npm] [![AppVeyor][shield-io-AppVeyor]][appveyor] [![Travis CI][shield-io-Travis-CI]][travis] [![Travis CI][shield-io-Coveralls]][coveralls] [![GitHub - Issues Open][shield-io-GitHub-Issues-Open]][github-issues] [![GitHub - Pull Requests Open][shield-io-GitHub-Pull-Requests-Open]][github-pulls] [![GitHub - Contributors][shield-io-GitHub-Contributors]][github-graphs-contributors] [![Node Security Platform][shield-io-nsp]][nsp] [![Standard - JavaScript Style Guide][shield-io-standard-style]][standardjs]
 
 [shield-io-altusaero]: https://img.shields.io/badge/altusaero-jetta-4679AB.svg?style=flat-square
 [shield-io-npm-version]: https://img.shields.io/npm/v/jetta.svg?style=flat-square
@@ -13,6 +13,7 @@
 [shield-io-GitHub-Issues-Open]: https://img.shields.io/github/issues-raw/altusaero/jetta.svg?style=flat-square
 [shield-io-GitHub-Pull-Requests-Open]: https://img.shields.io/github/issues-pr-raw/altusaero/jetta.svg?style=flat-square
 [shield-io-GitHub-Contributors]: https://img.shields.io/github/contributors/altusaero/jetta.svg?style=flat-square
+[shield-io-nsp]: https://img.shields.io/nsp/npm/jetta.svg?style=flat-square
 [shield-io-standard-style]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
 
 [altusaero-github]: https://github.com/altusaero/
@@ -23,9 +24,12 @@
 [github-issues]: https://github.com/AltusAero/jetta/issues
 [github-pulls]: https://github.com/AltusAero/jetta/pulls
 [github-graphs-contributors]: https://github.com/AltusAero/jetta/graphs/contributors
+[nsp]: https://nodesecurity.io/orgs/altus-aero/projects/a56bb420-0e75-4a36-8c7d-fd48db5b4c21
 [standardjs]: http://standardjs.com/
 
-![Jetta logo](https://altusaero.net/opensource/jetta/logo/1.1/jetta.png)
+<p align="center">
+  <img title="Jetta logo" alt="Jetta logo" src="https://altusaero.net/opensource/jetta/logo/1.2/jetta.svg">
+</p>
 
 ```js
 const jetta = require('jetta')
@@ -94,7 +98,7 @@ $ npm install jetta
 ```js
 const jetta = require('jetta')
 
-const imageURL = 'https://altusaero.net/opensource/jetta/logo/1.1/jetta.svg'
+const imageURL = 'https://altusaero.net/opensource/jetta/logo/1.2/jetta.svg'
 const options = {toFile: 'jetta.svg'}
 
 jetta.request(imageURL, options, (error, results) => {
