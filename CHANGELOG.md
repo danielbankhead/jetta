@@ -1,7 +1,9 @@
 ## NEXT
 
-- Updated logo (PNG -> SVG)
-- Added [nsp badge](https://github.com/badges/shields/pull/1156)
+- Documentation cleanup
+  - Updated logo (PNG -> SVG)
+  - Added [nsp badge](https://github.com/badges/shields/pull/1156)
+- Added explicit test support for Node LTS versions
 
 ## [1.1.3](https://github.com/AltusAero/jetta/releases/tag/v1.1.3)
 
