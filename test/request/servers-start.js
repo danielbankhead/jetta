@@ -99,7 +99,7 @@ async function serversStart (sharedState = {}) {
     createDualServers('encoding', (req, res) => {
       getBody(req, (body) => {
         const bodyJSON = JSON.parse(body.toString())
-        let output = Buffer.alloc(bodyJSON.alloc)
+        let output = Buffer.alloc(bodyJSON.alloc, 'test data')
 
         for (let i = 0, len = bodyJSON.encodings.length; i < len; i++) {
           if (bodyJSON.encodings[i] === 'gzip') {

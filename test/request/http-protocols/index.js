@@ -172,12 +172,12 @@ async function httpProtocolsTests (t = () => {}, parentScope = [], sharedState =
 
         const contentEncodingResults = await uniformResultsExecutor(t, nestedContentEncodingScope, rParams(true, 'encoding', null, options))
 
-        t.equal(Buffer.compare(contentEncodingResults.data, Buffer.alloc(alloc)), 0, m(nestedContentEncodingScope, `decoded response should be valid`))
+        t.equal(Buffer.compare(contentEncodingResults.data, Buffer.alloc(alloc, 'test data')), 0, m(nestedContentEncodingScope, `decoded response should be valid`))
 
         options.checksum = {
           algorithm: 'sha384',
           digest: 'base64',
-          expected: crypto.createHash('sha384').update(Buffer.alloc(alloc)).digest('base64')
+          expected: crypto.createHash('sha384').update(Buffer.alloc(alloc, 'test data')).digest('base64')
         }
 
         await uniformResultsExecutor(t, [...nestedContentEncodingScope, 'checksum should be based on decoded response'], rParams(true, 'encoding', null, options))

@@ -6,6 +6,7 @@
 - Added explicit test support for Node LTS versions
 - Fixed a bug on Node 9 where an event triggered via a destroyed `CookieManager` or `PublicSuffix` instance may throw a `Cannot read property '$property' of null` error
   - Added static `keysToDestroy` object to each class to whitelist properties to destroy
+- Minor test updates
 
 ## [1.1.3](https://github.com/AltusAero/jetta/releases/tag/v1.1.3)
 
