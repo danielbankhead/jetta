@@ -6,6 +6,11 @@
   const ps = new jetta.PublicSuffix()
   ```
 
+  - _static_ jetta.PublicSuffix.keysToDestroy OBJECT
+    - The names of keys that will be assigned to `null` when an `jetta.PublicSuffix` instance uses their `destroy` method
+
+    - _return_ OBJECT<`name`, true>
+
   - _new_ jetta.PublicSuffix([`options` OBJECT])
     - All options are optional (defaults can be found in `jetta.defaults.publicSuffix`)
     - Prepares an immediate update upon creation under the following cases:

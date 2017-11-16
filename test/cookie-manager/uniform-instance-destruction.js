@@ -2,7 +2,7 @@
 
 async function uniformInstanceDestructionTests (t = () => {}, parentScope = [], sharedState = {}) {
   const scope = [...parentScope, uniformInstanceDestructionTests.name]
-  const {config, m, cm, preservePublicSuffixWhenDestroyed} = sharedState
+  const {jetta, config, m, cm, preservePublicSuffixWhenDestroyed} = sharedState
 
   let psFromCM = cm.publicSuffix
 
@@ -42,7 +42,7 @@ async function uniformInstanceDestructionTests (t = () => {}, parentScope = [], 
 
   await new Promise((resolve, reject) => setTimeout(resolve, config.shortTimeoutForPublicSuffixDestructionTests))
 
-  const destroyKeys = Object.keys(cm)
+  const destroyKeys = Object.keys(jetta.CookieManager.keysToDestroy)
 
   for (let i = 0, len = destroyKeys.length; i < len; i++) {
     t.equal(cm[destroyKeys[i]], null, m(scope, `"${destroyKeys[i]}" should be \`null\` on destroy()`))

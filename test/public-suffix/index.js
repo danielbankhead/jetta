@@ -32,6 +32,8 @@ tape('public-suffix', {timeout: 60 * 1000}, (t) => {
 
   async function asyncTests () {
     t.equal(typeof jetta.PublicSuffix, 'function', `jetta.PublicSuffix should be a function (class)`)
+    t.equal(typeof jetta.PublicSuffix.keysToDestroy, 'object', `jetta.PublicSuffix.keysToDestroy should be an object`)
+    t.notEqual(jetta.PublicSuffix.keysToDestroy, null, `jetta.PublicSuffix.keysToDestroy should be \`null\``)
 
     await testTools.prepareCachedDefaultPublicSuffixList(shared.defaults)
     testTools.cleanupFiles(defaults.publicSuffix.path)

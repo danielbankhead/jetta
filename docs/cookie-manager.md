@@ -9,6 +9,11 @@
   const cm = new jetta.CookieManager()
   ```
 
+  - _static_ jetta.CookieManager.keysToDestroy OBJECT
+    - The names of keys that will be assigned to `null` when an `jetta.CookieManager` instance uses their `destroy` method
+
+    - _return_ OBJECT<`name`, true>
+
   - _new_ jetta.CookieManager([`options` OBJECT])
     - All options are optional (defaults can be found in `jetta.defaults.cookieManager`)
 
