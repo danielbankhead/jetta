@@ -7,6 +7,7 @@
 - Fixed a bug on Node 9 where an event triggered via a destroyed `CookieManager` or `PublicSuffix` instance may throw a `Cannot read property '$property' of null` error
   - Added static `keysToDestroy` object to each class to whitelist properties to destroy
 - Minor test updates
+- Add `statusCode` to error message for 'jetta-request-bad-response-code' error
 
 ## [1.1.3](https://github.com/AltusAero/jetta/releases/tag/v1.1.3)
 
