@@ -2,6 +2,7 @@
 
 const crypto = require('crypto')
 const fs = require('fs')
+const https = require('https')
 
 const sharedOptionsTests = require('../shared-options')
 const uniformResultsExecutor = require('../uniform-results-executor')
@@ -28,7 +29,27 @@ async function httpProtocolsTests (t = () => {}, parentScope = [], sharedState =
       }
 
       if (protocol === 'https') {
-        options.requestOptions = Object.assign(options.requestOptions, config.TLSTestCertAndKey)
+        const additionalOptionsForHTTPSAgent = Object.assign({rejectUnauthorized: false}, config.TLSTestCertAndKey)
+
+        if (typeof options.agents !== 'object') {
+          options.agents = {'https:': new https.Agent(additionalOptionsForHTTPSAgent)}
+        } else if (typeof options.agents['https:'] !== 'object') {
+          options.agents['https:'] = new https.Agent(additionalOptionsForHTTPSAgent)
+        } else {
+          let hadFromAgentsOption = false
+
+          if (options.agents['https:'].fromAgentsOption === true) {
+            hadFromAgentsOption = true
+          }
+
+          const updatedAgent = Object.assign({}, options.agents['https:'], additionalOptionsForHTTPSAgent)
+
+          options.agents['https:'] = new https.Agent(updatedAgent)
+
+          if (hadFromAgentsOption === true) {
+            options.agents['https:'].fromAgentsOption = true
+          }
+        }
       }
 
       Object.assign(options.requestOptions, {protocol: `${protocol}:`, socketPath: serverSet[serverName].address()})
@@ -518,7 +539,7 @@ async function httpProtocolsTests (t = () => {}, parentScope = [], sharedState =
 
     const agentsResults = await uniformResultsExecutor(t, agentsScope, rParams(true, 'basic', null, {agents: config.httpProtocols.agents, requestOptions: {agent: config.httpProtocols.agentsManual[`${protocol}:`]}}))
 
-    t.true(agentsResults.options.requestOptions.agent.fromAgents, m(agentsScope, `request should prefer options.agents over options.requestOptions.agent`))
+    t.true(agentsResults.options.requestOptions.agent.fromAgentsOption, m(agentsScope, `request should prefer options.agents over options.requestOptions.agent`))
 
     await contentEncodingTests()
     await redirectTests()

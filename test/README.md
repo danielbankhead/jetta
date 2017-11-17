@@ -94,8 +94,8 @@ The `data/test/` contains a few files for testing. Here's what they are:
   - `shared-config.json` - shared configuration between tests, such as supported error languages
   - `.cached-public-suffix.dat` - cached public suffix list to cut bandwidth and respect the maintainers of the public suffix list
     - Ignored git by default
-  - `tls-cert.pem` and `tls-priv.pem` - sample key and cert for testing TLS and the `https:` protocol
-    - Test certs can be created via:
+  - `tls-test-cert.pem` and `tls-test-cert.pem` - sample key and cert for testing TLS and the `https:` protocol
+    - Test certs can be recreated via:
       ```sh
-      $ openssl req -x509 -days 3650 -nodes -newkey rsa:4096 -keyout tls-priv.pem -out tls-cert.pem
+      $ openssl req -x509 -days 3650 -nodes -newkey rsa:4096 -keyout tls-test-key.pem -out tls-test-cert.pem
       ```

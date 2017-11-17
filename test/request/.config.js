@@ -15,8 +15,9 @@ try {
 
 const local = {
   TLSTestCertAndKey: {
-    cert: fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'test', 'tls-cert.pem')),
-    key: fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'test', 'tls-priv.pem'))
+    cert: fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'test', 'tls-test-cert.pem')),
+    key: fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'test', 'tls-test-key.pem')),
+    ca: [fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'test', 'tls-test-key.pem'))]
   },
   dataProtocol: {
     invalid: [
@@ -78,8 +79,8 @@ const local = {
   },
   httpProtocols: {
     agents: {
-      'http:': Object.assign(new http.Agent({keepAlive: true}), {fromAgents: true}),
-      'https:': Object.assign(new https.Agent({keepAlive: true}), {fromAgents: true})
+      'http:': Object.assign(new http.Agent({keepAlive: true}), {fromAgentsOption: true}),
+      'https:': Object.assign(new https.Agent({keepAlive: true}), {fromAgentsOption: true})
     },
     agentsManual: {
       'http:': new http.Agent({keepAlive: true}),
