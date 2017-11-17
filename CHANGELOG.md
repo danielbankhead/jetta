@@ -1,5 +1,9 @@
 ## NEXT
 
+- .
+
+## [1.2.0](https://github.com/AltusAero/jetta/releases/tag/v1.2.0)
+
 - Documentation cleanup
   - Updated logo (PNG -> SVG)
   - Added [nsp badge](https://github.com/badges/shields/pull/1156)
