@@ -6,5 +6,4 @@ node_js:
   - "node"
   - "lts/*"
   - "8"
-  - "7.9.0" # For Electron 1.7.x
 after_success: npm run coverage

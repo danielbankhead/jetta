@@ -1,6 +1,8 @@
-## NEXT
+## [2.0.0](https://github.com/AltusAero/jetta/releases/tag/v2.0.0)
 
-- .
+- **Breaking Changes**
+  - Node 8.9.0 or higher is required.
+  - npm 5.5.0 or higher is required.
 
 ## [1.2.0](https://github.com/AltusAero/jetta/releases/tag/v1.2.0)
 
