@@ -14,6 +14,11 @@
 - Update [CHANGELOG.md](CHANGELOG.md)
   - no need to worry about the version header (1.0.0, 1.2.1, etc.) as this will be determined after collectively reviewing all of the pending commits to master
 - Add yourself to the contributors section in the `package.json`, if you'd like.
+- If you are interested in tackling TODOs and others challenges in the codebase feel free to search by using the following regex:
+  ```js
+  /@?(TODO|FIXME|CHANGED|XXX|IDEA|HACK|NOTE|REVIEW|NB|BUG|QUESTION|COMBAK|TEMP|TEST|FIX):/
+  ```
+  - You can also use the same pattern in the comments of any contribution
 - You must agree to the [Developer's Certificate of Origin](http://developercertificate.org) (found below).
 
 ## Style Guide

@@ -7,6 +7,8 @@
 
   - Introductory video or gif, with real-world examples, on main README.md
 
+  - Update codebase with more comments - make things a bit easier to reason about
+
   - Useful `examples/`
     - With videos and gifs
     - Progress logging examples:
